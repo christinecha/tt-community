@@ -1,0 +1,32 @@
+{
+  "name": "homefinder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@googlemaps/google-maps-services-js": "^3.1.16",
+    "@googlemaps/js-api-loader": "^1.11.4",
+    "@reach/combobox": "^0.15.1",
+    "geolib": "^3.3.1",
+    "mapbox-gl": "^2.3.0",
+    "react": "^17.0.2",
+    "react-cool-onclickoutside": "^1.6.2",
+    "react-dom": "^17.0.2",
+    "use-places-autocomplete": "^1.9.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "generate:map-data": "node ./scripts/generate-map-data.js",
+    "dev": "NODE_ENV=development webpack serve"
+  }
+}
