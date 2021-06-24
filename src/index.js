@@ -109,11 +109,18 @@ const App = () => {
 
   return (
     <div
-      css={css({ display: "flex", flexDirection: "column", height: "100%" })}
+      css={css({
+        maxWidth: 1200,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        margin: "auto",
+      })}
     >
       <div
         css={css({
-          borderBottom: "10px solid white",
+          background: "white",
+          borderBottom: "10px solid #e6e6e6",
           padding: 20,
         })}
       >
@@ -129,10 +136,11 @@ const App = () => {
         <div
           css={css({
             position: "relative",
+            background: "white",
             width: "50%",
-            maxWidth: 600,
+            maxWidth: 450,
             padding: 20,
-            borderRight: "10px solid white",
+            borderRight: "10px solid #e6e6e6",
           })}
         >
           <label>sorted by nearest to destination</label>

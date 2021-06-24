@@ -27,7 +27,7 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                     display: "inline",
                     cursor: "pointer",
                     "&:hover": {
-                      borderBottom: "1px solid white",
+                      borderBottom: "1px solid black",
 
                       span: {
                         opacity: 1,

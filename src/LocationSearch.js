@@ -49,14 +49,14 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
           css={css({
             background: "transparent",
             border: "none",
-            color: "white",
+            color: "black",
             fontFamily: "Muli, sans-serif",
             fontSize: 16,
-            borderBottom: "2px solid rgba(255,255,255,0.5)",
+            borderBottom: "2px solid #e6e6e6",
             width: 400,
             "&:focus": {
               outline: "none",
-              borderBottom: "2px solid white",
+              borderBottom: "2px solid black",
             },
             "&::placeholder": {
               color: "white",
@@ -65,21 +65,48 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             },
           })}
         />
-        <ComboboxPopover ref={ref} css={css({ background: "black" })}>
-          {status === "OK" && data.length && (
-            <ComboboxList>
+
+        {status === "OK" && data.length && (
+          <ComboboxPopover
+            ref={ref}
+            css={css({
+              background: "white",
+              border: "2px solid black",
+              boxSizing: "border-box",
+              marginTop: -2,
+            })}
+          >
+            <ComboboxList
+              css={css({
+                listStyle: "none",
+                padding: 0,
+                paddingTop: 5,
+                paddingBottom: 5,
+                margin: 0,
+              })}
+            >
               {data.map(({ place_id, description }) => (
                 <ComboboxOption
                   key={place_id}
                   value={place_id}
-                  css={css({ cursor: "pointer" })}
+                  css={css({
+                    cursor: "pointer",
+                    paddingLeft: 10,
+                    paddingRight: 10,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+
+                    "&:hover": {
+                      color: "blue",
+                    },
+                  })}
                 >
                   {description}
                 </ComboboxOption>
               ))}
             </ComboboxList>
-          )}
-        </ComboboxPopover>
+          </ComboboxPopover>
+        )}
       </Combobox>
     </div>
   );
