@@ -18,10 +18,15 @@ const PINS = {
   ACTIVE: "./pinpong-black.svg",
 };
 
-export const ClubMap = ({ clubs, center, activeClub, setActiveClub }) => {
+export const ClubMap = ({
+  clubs,
+  center,
+  activeClub,
+  setActiveClub,
+  mapRef,
+}) => {
   const markers = useRef({}).current;
   const infowindows = useRef([]).current;
-  const mapRef = useRef();
 
   useLayoutEffect(() => {
     window.addEventListener("hashchange", () => {
@@ -102,7 +107,6 @@ export const ClubMap = ({ clubs, center, activeClub, setActiveClub }) => {
     mapRef.current.setCenter({
       ...center,
     });
-    mapRef.current.setZoom(7);
   }, [center, mapRef.current]);
 
   return <div id="map" css={css({ width: "100%", height: "100%" })}></div>;

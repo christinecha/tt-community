@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React, { useEffect } from "react";
+import { ClubStars } from "./ClubStars";
+import { ClubTrait } from "./ClubTrait";
 
 export const ClubList = ({ clubs, setActiveClub }) => {
   return (
@@ -19,6 +21,7 @@ export const ClubList = ({ clubs, setActiveClub }) => {
         {clubs.map((club, i) => {
           const distKm = club.distance / 1000;
           const distMi = 0.621371 * distKm;
+
           return (
             <li key={club.id} css={css({ marginBottom: 10 })}>
               <a css={css({ textDecoration: "none" })} href={`#${club.id}`}>
@@ -40,6 +43,17 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                   <span css={css({ opacity: 0, marginLeft: 5 })}>→</span>
                 </h3>
               </a>
+              {club.traits && (
+                <div css={css({ margin: -2, marginTop: 5 })}>
+                  <div>
+                    <ClubStars score={club.score} />
+                  </div>
+                  {/* {Object.entries(club.traits).map(([id, value]) => {
+                    if (!value || value < 2) return null;
+                    return <ClubTrait key={id} id={id} value={value} />;
+                  })} */}
+                </div>
+              )}
               <p css={css({ marginTop: 5 })}>{club.address}</p>
               <label>{distMi.toFixed(1)} miles away</label>
             </li>

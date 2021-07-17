@@ -27,9 +27,9 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   };
 
   const handleSelect = (val) => {
-    const { description } = data.find((d) => d.place_id === val);
-    setValue(description, false);
-    onChange(val);
+    const { place_id } = data.find((d) => d.description === val);
+    setValue(val, false);
+    onChange(place_id);
     clearSuggestions();
   };
 
@@ -59,7 +59,6 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
               borderBottom: "2px solid black",
             },
             "&::placeholder": {
-              color: "white",
               fontStyle: "italic",
               opacity: 0.5,
             },
@@ -88,7 +87,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
               {data.map(({ place_id, description }) => (
                 <ComboboxOption
                   key={place_id}
-                  value={place_id}
+                  value={description}
                   css={css({
                     cursor: "pointer",
                     paddingLeft: 10,
@@ -97,7 +96,10 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
                     paddingBottom: 5,
 
                     "&:hover": {
-                      color: "blue",
+                      background: "#e6e6e6",
+                    },
+                    '&[aria-selected="true"]': {
+                      background: "#e6e6e6",
                     },
                   })}
                 >

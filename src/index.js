@@ -11,6 +11,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 import { LocationSearch } from "./LocationSearch";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
 import { getDistance } from "geolib";
+import axios from "axios";
 
 import ReactDOM from "react-dom";
 import { css, jsx } from "@emotion/react";
@@ -20,6 +21,7 @@ import ttClubs from "../data/tt-clubs";
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
+import { getClubScore } from "./util";
 
 let clubs = [];
 
@@ -37,16 +39,22 @@ ttClubs.forEach((club) => {
   });
 });
 
-clubs = clubs.filter(
+clubs = clubs
+.filter(
   (club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng)
-);
-// .filter((c) => c.visited);
+).filter(club => !club.closed);
+
+const SORT = {
+  DISTANCE: { name: "distance", fn: (a, b) => a.distance - b.distance },
+};
 
 const App = () => {
-  const initialLocationRef = useRef();
+  const mapRef = useRef();
+  const [initialLocation, setInitialLocation] = useState();
   const [activeClub, setActiveClub] = useState();
   const [loaded, setLoaded] = useState(false);
   const [searchCenter, setSearchCenter] = useState();
+  const [sortBy, setSortBy] = useState(SORT.DISTANCE);
 
   useLayoutEffect(() => {
     const loader = new Loader({
@@ -56,27 +64,41 @@ const App = () => {
     });
 
     loader.load().then(() => {
-      const rnd = Math.floor(Math.random() * clubs.length);
-      const randomClub = clubs[rnd];
-      const randomLocation = { lat: randomClub.lat, lng: randomClub.lng };
-
-      getGeocode({ location: randomLocation }).then((results) => {
-        initialLocationRef.current = results[0].formatted_address;
-        setSearchCenter(randomLocation);
-        setLoaded(true);
-      });
+      setLoaded(true);
     });
   }, []);
 
-  const onSearch = (placeId) => {
-    console.log(placeId);
-    getGeocode({ placeId })
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        const { lat, lng } = latLng;
-        setSearchCenter(latLng);
+  useEffect(() => {
+    if (!loaded) return;
 
-        console.log("Coordinates: ", { lat, lng });
+    const cachedLat = Number(window.localStorage.getItem("searchLat"));
+    const cachedLng = Number(window.localStorage.getItem("searchLng"));
+
+    let center = { lat: cachedLat, lng: cachedLng };
+
+    if (!center.lat || !center.lng) {
+      const rnd = Math.floor(Math.random() * clubs.length);
+      const randomClub = clubs[rnd];
+      center = { lat: randomClub.lat, lng: randomClub.lng };
+    }
+
+    getGeocode({ location: center }).then((results) => {
+      const match = results[0];
+      setInitialLocation(match.formatted_address);
+      setSearchCenter(center);
+      mapRef.current.setZoom(9);
+    });
+  }, [loaded, mapRef]);
+
+  const onSearch = (placeId) => {
+    getGeocode({ placeId })
+      .then((results) => {
+        const match = results[0];
+        getLatLng(match).then((latLng) => {
+          const { lat, lng } = latLng;
+          setSearchCenter(latLng);
+          mapRef.current.fitBounds(match.geometry.viewport);
+        });
       })
       .catch((error) => {
         console.log("Error: ", error);
@@ -85,6 +107,9 @@ const App = () => {
 
   const sortedClubs = useMemo(() => {
     if (!searchCenter) return clubs;
+
+    window.localStorage.setItem("searchLat", searchCenter.lat);
+    window.localStorage.setItem("searchLng", searchCenter.lng);
 
     const getDist = (club) => {
       return getDistance(
@@ -96,11 +121,12 @@ const App = () => {
       .map((c) => ({
         ...c,
         distance: getDist(c),
+        score: getClubScore(c),
       }))
-      .sort((a, b) => a.distance - b.distance);
-  }, [clubs, searchCenter]);
+      .sort(sortBy.fn);
+  }, [clubs, searchCenter, sortBy]);
 
-  if (!loaded) return null;
+  if (!loaded || !initialLocation) return null;
 
   // const sortAndFilter = {
   //   filters: [],
@@ -127,10 +153,9 @@ const App = () => {
         <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
         <p>A guided map to find table tennis clubs wherever you go.</p>
         <br />
-        <LocationSearch
-          onChange={onSearch}
-          defaultValue={initialLocationRef.current}
-        />
+        {initialLocation && (
+          <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
+        )}
       </div>
       <div css={css({ display: "flex", overflow: "hidden" })}>
         <div
@@ -143,7 +168,9 @@ const App = () => {
             borderRight: "10px solid #e6e6e6",
           })}
         >
-          <label>sorted by nearest to destination</label>
+          <label css={css({ display: "block", paddingBottom: 10 })}>
+            sorted by {sortBy.name}
+          </label>
           <ClubList clubs={sortedClubs} setActiveClub={setActiveClub} />
           {activeClub && (
             <ClubDetail club={activeClub} onClose={() => setActiveClub(null)} />
@@ -151,6 +178,7 @@ const App = () => {
         </div>
         <div css={css({ flex: 1 })}>
           <ClubMap
+            mapRef={mapRef}
             center={searchCenter}
             clubs={clubs}
             activeClub={activeClub}
