@@ -58,8 +58,8 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             fontFamily: "Muli, sans-serif",
             fontSize: 16,
             borderBottom: "2px solid var(--bgColor)",
-            maxWidth: 400,
-            width: "100%",
+            maxWidth: "100%",
+            width: 400,
             "&:focus": {
               outline: "none",
               borderBottom: "2px solid var(--contentColor)",
