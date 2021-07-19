@@ -17,15 +17,21 @@
   </head>
 
   <style>
+    :root {
+      --bgColor: #e6e6e6;
+      --contentBgColor: white;
+      --contentColor: #212121;
+    }
+
     body {
       padding: 0;
       margin: 0;
       font-family: "Muli", sans-serif;
       box-sizing: border-box;
-      border: 10px solid #e6e6e6;
-      background: #e6e6e6;
+      border: 10px solid var(--bgColor);
+      background: var(--bgColor);
       height: 100vh;
-      color: #212121;
+      color: var(--contentColor);
       overflow: hidden;
     }
 
@@ -49,7 +55,6 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       background-color: rgba(255, 255, 255, 0.2);
-      padding: 2px 5px;
     }
   </style>
 

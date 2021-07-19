@@ -49,14 +49,14 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
           css={css({
             background: "transparent",
             border: "none",
-            color: "black",
+            color: "var(--contentColor)",
             fontFamily: "Muli, sans-serif",
             fontSize: 16,
-            borderBottom: "2px solid #e6e6e6",
+            borderBottom: "2px solid var(--bgColor)",
             width: 400,
             "&:focus": {
               outline: "none",
-              borderBottom: "2px solid black",
+              borderBottom: "2px solid var(--contentColor)",
             },
             "&::placeholder": {
               fontStyle: "italic",
@@ -69,8 +69,8 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
           <ComboboxPopover
             ref={ref}
             css={css({
-              background: "white",
-              border: "2px solid black",
+              background: "var(--contentBgColor)",
+              border: "2px solid var(--contentColor)",
               boxSizing: "border-box",
               marginTop: -2,
             })}
@@ -96,10 +96,10 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
                     paddingBottom: 5,
 
                     "&:hover": {
-                      background: "#e6e6e6",
+                      background: "var(--bgColor)",
                     },
                     '&[aria-selected="true"]': {
-                      background: "#e6e6e6",
+                      background: "var(--bgColor)",
                     },
                   })}
                 >

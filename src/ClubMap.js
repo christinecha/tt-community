@@ -1,6 +1,8 @@
 /** @jsx jsx */
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import ReactDOMServer from "react-dom/server";
+
 import { Loader } from "@googlemaps/js-api-loader";
 import { LocationSearch } from "./LocationSearch";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
@@ -12,6 +14,8 @@ import ttClubs from "../data/tt-clubs";
 
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
+import { ClubStars } from "./ClubStars";
+import debounce from "lodash.debounce";
 
 const PINS = {
   DEFAULT: "./pinpong.svg",
@@ -23,48 +27,94 @@ export const ClubMap = ({
   center,
   activeClub,
   setActiveClub,
+  onChange,
   mapRef,
 }) => {
   const markers = useRef({}).current;
   const infowindows = useRef([]).current;
 
   useLayoutEffect(() => {
-    window.addEventListener("hashchange", () => {
-      const clubId = location.hash.split("#")[1];
-      const newActiveClub = clubs.find((c) => c.id === clubId);
-      setActiveClub(newActiveClub || null);
-    });
-
     const map = new google.maps.Map(document.getElementById("map"), {
-      // center: { lat: 39.8283, lng: -98.5795 },
       center,
       zoom: 4,
       mapTypeControl: false,
     });
 
     mapRef.current = map;
+  }, []);
 
+  useEffect(() => {
+    const debouncedOnChange = debounce(() => {
+      const bounds = mapRef.current.getBounds();
+      onChange(bounds);
+    }, 500);
+    const handle = mapRef.current.addListener(
+      "bounds_changed",
+      debouncedOnChange
+    );
+
+    return () => {
+      handle.remove();
+    };
+  }, [onChange]);
+
+  useEffect(() => {
     clubs.forEach((club) => {
       const { lat, lng } = club;
-      // const isActive = randomClub.id === club.id;
+      const isActive = (activeClub || {}).id === club.id;
 
       if (!lat || !lng) return;
-      const marker = new google.maps.Marker({
-        map,
-        icon: {
-          // url: isActive ? PINS.ACTIVE : PINS.DEFAULT,
-          url: PINS.DEFAULT,
-        },
-        position: {
-          lat,
-          lng,
-        },
-      });
+
+      const minSize = 20;
+      const maxSize = 32;
+      const size = (club.score || 0.5) * (maxSize - minSize) + minSize;
+
+      let marker = markers[club.id];
+
+      if (!marker) {
+        marker = new google.maps.Marker({
+          map: mapRef.current,
+          icon: {
+            url: isActive ? PINS.ACTIVE : PINS.DEFAULT,
+            scaledSize: new google.maps.Size(size, size),
+          },
+          position: {
+            lat,
+            lng,
+          },
+          zIndex: isActive ? 2 : 1,
+        });
+      } else {
+        marker.setIcon({ url: isActive ? PINS.ACTIVE : PINS.DEFAULT });
+        marker.setZIndex(isActive ? 2 : 1);
+      }
 
       markers[club.id] = marker;
 
       const infowindow = new google.maps.InfoWindow({
-        content: `<p style="color: black; margin: 0; font-family: 'Muli', sans-serif;">${club.name}</p><a href="#${club.id}" style="color: black;">More Details</a>`,
+        content: ReactDOMServer.renderToString(
+          <div
+            style={{
+              overflow: "hidden",
+            }}
+          >
+            <p
+              style={{
+                color: "var(--contentColor)",
+                margin: 0,
+                fontFamily: "'Muli', sans-serif",
+              }}
+            >
+              {club.name}
+            </p>
+            <div style={{ margin: -2 }}>
+              <ClubStars score={club.score} />
+            </div>
+            <a href={`#${club.id}`} style={{ color: "var(--contentColor)" }}>
+              More Details
+            </a>
+          </div>
+        ),
         pixelOffset: new google.maps.Size(0, -2),
         maxWidth: 200,
       });
@@ -77,25 +127,22 @@ export const ClubMap = ({
       });
 
       marker.addListener("dblclick", () => {
-        map.setCenter({ lat, lng });
-        map.setZoom(14);
-        console.log("hey");
+        mapRef.current.setCenter({ lat, lng });
+        mapRef.current.setZoom(14);
       });
-
-      // if (isActive) {
-      //   setActiveClub({ ...club, marker });
-      // }
     });
-  }, []);
+  }, [clubs]);
 
   useEffect(() => {
-    if (!activeClub) return;
-
     Object.values(markers).forEach((m) => {
       m.setIcon({ url: PINS.DEFAULT });
       m.setZIndex(1);
     });
+
+    if (!activeClub) return;
     const activeMarker = markers[activeClub.id];
+    if (!activeMarker) return;
+
     activeMarker.setIcon({
       url: PINS.ACTIVE,
     });
@@ -109,5 +156,15 @@ export const ClubMap = ({
     });
   }, [center, mapRef.current]);
 
-  return <div id="map" css={css({ width: "100%", height: "100%" })}></div>;
+  return (
+    <div
+      id="map"
+      css={css({
+        width: "100%",
+        height: "100%",
+        border: "10px solid var(--contentBgColor)",
+        boxSizing: "border-box",
+      })}
+    ></div>
+  );
 };

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
 import React, {
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -22,36 +23,65 @@ import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
 import { getClubScore } from "./util";
+import Select from "react-select";
 
-let clubs = [];
+let rawClubs = [];
 
 ttClubs.forEach((club) => {
   if (!club.locations) {
-    clubs.push(club);
+    rawClubs.push(club);
     return;
   }
 
   club.locations.forEach((l) => {
-    clubs.push({
+    rawClubs.push({
       ...club,
       ...l,
     });
   });
 });
 
-clubs = clubs
-.filter(
-  (club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng)
-).filter(club => !club.closed);
+rawClubs = rawClubs
+  .filter((club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng))
+  .filter((club) => !club.closed)
+  .map((club) => ({
+    ...club,
+    score: getClubScore(club),
+  }));
 
 const SORT = {
-  DISTANCE: { name: "distance", fn: (a, b) => a.distance - b.distance },
+  DISTANCE: {
+    id: "distance",
+    name: "Distance",
+    fn: (a, b) => a.distance - b.distance,
+  },
+  RATING: {
+    id: "rating",
+    name: "Rating",
+    fn: (a, b) => {
+      if (b.score === undefined) return -1;
+      if (a.score === undefined) return 1;
+      return b.score - a.score;
+    },
+  },
+};
+
+const SORT_OPTIONS = [
+  { value: SORT.DISTANCE, label: SORT.DISTANCE.name },
+  { value: SORT.RATING, label: SORT.RATING.name },
+];
+
+const getClubFromUrl = () => {
+  const clubId = location.hash.split("#")[1];
+  const newActiveClub = rawClubs.find((c) => c.id === clubId);
+  return newActiveClub || null;
 };
 
 const App = () => {
+  const [clubs, setClubs] = useState([]);
   const mapRef = useRef();
   const [initialLocation, setInitialLocation] = useState();
-  const [activeClub, setActiveClub] = useState();
+  const [activeClub, setActiveClub] = useState(getClubFromUrl());
   const [loaded, setLoaded] = useState(false);
   const [searchCenter, setSearchCenter] = useState();
   const [sortBy, setSortBy] = useState(SORT.DISTANCE);
@@ -65,6 +95,10 @@ const App = () => {
 
     loader.load().then(() => {
       setLoaded(true);
+
+      window.addEventListener("hashchange", () => {
+        setActiveClub(getClubFromUrl());
+      });
     });
   }, []);
 
@@ -106,7 +140,7 @@ const App = () => {
   };
 
   const sortedClubs = useMemo(() => {
-    if (!searchCenter) return clubs;
+    if (!searchCenter) return [];
 
     window.localStorage.setItem("searchLat", searchCenter.lat);
     window.localStorage.setItem("searchLng", searchCenter.lng);
@@ -117,14 +151,25 @@ const App = () => {
         { latitude: searchCenter.lat, longitude: searchCenter.lng }
       );
     };
+
     return clubs
       .map((c) => ({
         ...c,
         distance: getDist(c),
-        score: getClubScore(c),
       }))
       .sort(sortBy.fn);
-  }, [clubs, searchCenter, sortBy]);
+  }, [clubs, sortBy, searchCenter]);
+
+  const onBoundsChange = useCallback(
+    (bounds) => {
+      const newClubs = rawClubs.filter((c) => {
+        const inBounds = bounds.contains({ lat: c.lat, lng: c.lng });
+        return inBounds;
+      });
+      setClubs(newClubs);
+    },
+    [clubs]
+  );
 
   if (!loaded || !initialLocation) return null;
 
@@ -145,8 +190,8 @@ const App = () => {
     >
       <div
         css={css({
-          background: "white",
-          borderBottom: "10px solid #e6e6e6",
+          background: "var(--contentBgColor)",
+          borderBottom: "10px solid var(--bgColor)",
           padding: 20,
         })}
       >
@@ -157,20 +202,43 @@ const App = () => {
           <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
         )}
       </div>
-      <div css={css({ display: "flex", overflow: "hidden" })}>
+      <div css={css({ display: "flex", flex: 1, overflow: "hidden" })}>
         <div
           css={css({
             position: "relative",
-            background: "white",
+            background: "var(--contentBgColor)",
             width: "50%",
             maxWidth: 450,
             padding: 20,
-            borderRight: "10px solid #e6e6e6",
+            borderRight: "10px solid var(--bgColor)",
           })}
         >
-          <label css={css({ display: "block", paddingBottom: 10 })}>
-            sorted by {sortBy.name}
-          </label>
+          <div
+            css={css({
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              paddingBottom: 10,
+            })}
+          >
+            <label css={css({ marginRight: 5 })}>sorted by </label>
+            <label css={css({ flex: 1 })}>
+              <Select
+                value={SORT_OPTIONS.find((s) => s.value === sortBy)}
+                options={SORT_OPTIONS}
+                onChange={(option) => {
+                  setSortBy(option.value);
+                }}
+                isSearchable={false}
+                styles={{
+                  container: (provided, state) => ({
+                    ...provided,
+                    maxWidth: 200,
+                  }),
+                }}
+              />
+            </label>
+          </div>
           <ClubList clubs={sortedClubs} setActiveClub={setActiveClub} />
           {activeClub && (
             <ClubDetail club={activeClub} onClose={() => setActiveClub(null)} />
@@ -183,6 +251,7 @@ const App = () => {
             clubs={clubs}
             activeClub={activeClub}
             setActiveClub={setActiveClub}
+            onChange={onBoundsChange}
           />
         </div>
       </div>

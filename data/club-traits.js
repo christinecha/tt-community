@@ -7,7 +7,7 @@ export const CLUB_TRAITS = {
   COURT_SIZE: "court-size",
   BARRIERS: "barriers",
   GROUP_TRAINING: "group-training",
-  PRIVATE_COACHING: "private-coaching",
+  WALKINS: "WALKINS",
   PRO_COACHES: "pro-coaches",
   COMPETITIVE_LEVEL: "competitive-level",
   TOURNAMENTS: "usatt-tournaments",
@@ -33,8 +33,8 @@ export const TRAIT_DATA = {
     color: "pink",
     name: "Open 5+ Days a Week",
     options: {
-      0: "There are no designated and reliable hours for table tennis.",
-      1: "There are designated and reliable hours for table tennis a few times a week.",
+      0: "There are limited hours (not designated, or only once a week).",
+      1: "There are reliable hours for table tennis more than once a week.",
       2: "The club is open 5-7 days a week with reliable hours.",
     },
   },
@@ -43,25 +43,25 @@ export const TRAIT_DATA = {
     name: "High Ceilings",
     options: {
       0: "The low ceilings do not allow for high balls.",
-      1: "The ceilings are high enough for low lobs.",
-      2: "The ceilings are high enough that most lobs will be unimpeded.",
+      1: "The ceilings are high enough for most competitive players.",
+      2: "The ceilings are high enough for professional matches",
     },
   },
   [CT.FLOORING]: {
     color: "yellow",
     name: "Pro Flooring",
     options: {
-      0: "There is no rubberized flooring on most tables.",
-      1: "There is rubberized flooring on most tables but not professional quality.",
+      0: "There is no sport flooring.",
+      1: "There is rubberized flooring on some tables.",
       2: "There is professional quality rubberized flooring at most tables.",
     },
   },
   [CT.LIGHTING]: {
     color: "yellow",
-    name: "Pro Flooring",
+    name: "Pro Lighting",
     options: {
       0: "The courts are not well lit; it might be hard to see the ball clearly.",
-      1: "The courts have good enough lighting for amateur play.",
+      1: "The courts have good enough lighting for most competitive players.",
       2: "The courts have excellent, professional-level lighting.",
     },
   },
@@ -69,36 +69,36 @@ export const TRAIT_DATA = {
     color: "yellow",
     name: "Pro-Sized Courts",
     options: {
-      0: "The courts are too small for most competitive play.",
-      1: "The courts are large enough for most amateurs, but not for professional play.",
-      2: "The courts are large enough for professional play.",
+      0: "Most courts are too small for advanced competitive play.",
+      1: "Most courts are large enough for advanced competitive play.",
+      2: "Most courts are large enough for advanced competitive play; some are large enough for professional matches.",
     },
   },
   [CT.BARRIERS]: {
     color: "yellow",
     name: "Complete Court Barriers",
     options: {
-      0: "There are few or no barriers around courts.",
-      1: "Most courts are surrounded by barriers, but they are not completely effective.",
-      2: "Most courts are completely surrounded by effective barriers.",
+      0: "There are few or no barriers available.",
+      1: "There are some barriers separating most playing areas.",
+      2: "There are enough barriers available to completely surround most courts.",
     },
   },
   [CT.GROUP_TRAINING]: {
     color: "yellow",
     name: "Regular Group Training",
     options: {
-      0: "There are no group training classes available.",
-      1: "There are sometimes group training classes available, but they are irregular or infrequent.",
-      2: "There are regular group training classes available, at least once a week.",
+      0: "There are no group training opportunities available.",
+      1: "There are sometimes group training opportunities available, but they are irregular or infrequent.",
+      2: "There are regular group training opportunities available, at least once a week.",
     },
   },
-  [CT.PRIVATE_COACHING]: {
+  [CT.WALKINS]: {
     color: "yellow",
-    name: "Private Coaching",
+    name: "Walk-in Friendly",
     options: {
-      0: "There is no private coaching available.",
-      1: "There is private coaching available but it is on a per-individual basis.",
-      2: "Anyone can easily book private coaching through the club.",
+      0: "This club is private and/or does not allow non-members.",
+      1: "No membership required to play but you need to contact the club or reserve a time in advance.",
+      2: "No membership required to play; walk-ins welcome.",
     },
   },
   [CT.PRO_COACHES]: {
@@ -116,7 +116,7 @@ export const TRAIT_DATA = {
     options: {
       0: "There are no or very few advanced competitive players who play here regularly.",
       1: "There are advanced competitive players who play here regularly.",
-      2: "On most days, there will be many advanced competitive players at this club.",
+      2: "On most days, there are many advanced competitive players at this club.",
     },
   },
   [CT.TOURNAMENTS]: {
@@ -124,8 +124,8 @@ export const TRAIT_DATA = {
     name: "Official Tournaments",
     options: {
       0: "There are no regular tournaments and/or league play.",
-      1: "There are regular, unofficial tournaments and/or league play.",
-      2: "There are regular, official tournaments.",
+      1: "There are regularly organized tournaments and/or league play.",
+      2: "There are regularly organized nationally-sanctioned tournaments.",
     },
   },
   [CT.PRO_TABLES]: {
@@ -141,18 +141,18 @@ export const TRAIT_DATA = {
     color: "yellow",
     name: "Temperature Control",
     options: {
-      0: "This club is often too uncomfortable to play at due to weather.",
-      1: "This club is sometimes uncomfortable to play at due to weather.",
-      2: "This club (almost) always maintains comfortable playing conditions.",
+      0: "There is no or limited climate control at this club.",
+      1: "There is some climate control at this club.",
+      2: "This club almost always maintains comfortable playing conditions.",
     },
   },
   [CT.ACCESSIBILITY]: {
     color: "yellow",
-    name: "Accessible",
+    name: "Wheelchair Accessibility",
     options: {
-      0: "This club is inaccessible to disabled folks.",
-      1: "This club is mostly but not completely accessible to disabled folks.",
-      2: "This club is accessible in all functions to disabled folks.",
+      0: "This club is not wheelchair-accessible.",
+      1: "Club entry is wheelchair-accessible but there are some primary areas (courts, restrooms, etc.) that are not.",
+      2: "This club is fully wheelchair-accessible.",
     },
   },
   [CT.MAINTENANCE]: {
