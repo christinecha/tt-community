@@ -10,6 +10,7 @@ import {
   ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
+import { useMobile } from "./util";
 
 // import "@reach/combobox/styles.css";
 
@@ -21,6 +22,8 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({ defaultValue });
+
+  const { isMobile } = useMobile();
 
   const handleInput = (e) => {
     setValue(e.target.value);
@@ -38,7 +41,9 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   });
 
   return (
-    <div css={css({ display: "flex" })}>
+    <div
+      css={css({ display: "flex", flexDirection: isMobile ? "column" : "row" })}
+    >
       <p css={css({ marginRight: 10 })}>Find a club near:</p>
       <Combobox onSelect={handleSelect} aria-labelledby="demo">
         <ComboboxInput
@@ -53,7 +58,8 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             fontFamily: "Muli, sans-serif",
             fontSize: 16,
             borderBottom: "2px solid var(--bgColor)",
-            width: 400,
+            maxWidth: 400,
+            width: "100%",
             "&:focus": {
               outline: "none",
               borderBottom: "2px solid var(--contentColor)",

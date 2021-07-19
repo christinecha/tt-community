@@ -15,10 +15,7 @@ export const ClubTrait = ({ id, value, full = false }) => {
   if (!data) return null;
 
   const option = data.options[value];
-
-  if (!option) return null;
-
-  const icon = ICONS[value] || "Unknown";
+  const icon = ICONS[value] || "";
 
   return (
     <span
@@ -37,7 +34,7 @@ export const ClubTrait = ({ id, value, full = false }) => {
       {data.name || id} {icon}
       {full && (
         <p css={css({ opacity: 0.8, lineHeight: 1.4, paddingBottom: 2 })}>
-          <em>{option}</em>
+          <em>{option || "Unknown"}</em>
         </p>
       )}
     </span>

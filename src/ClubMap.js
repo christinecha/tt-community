@@ -22,14 +22,7 @@ const PINS = {
   ACTIVE: "./pinpong-black.svg",
 };
 
-export const ClubMap = ({
-  clubs,
-  center,
-  activeClub,
-  setActiveClub,
-  onChange,
-  mapRef,
-}) => {
+export const ClubMap = ({ clubs, center, activeClub, onChange, mapRef }) => {
   const markers = useRef({}).current;
   const infowindows = useRef([]).current;
 

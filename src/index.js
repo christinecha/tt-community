@@ -22,7 +22,7 @@ import ttClubs from "../data/tt-clubs";
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
-import { getClubScore } from "./util";
+import { getClubScore, useMobile } from "./util";
 import Select from "react-select";
 
 let rawClubs = [];
@@ -77,6 +77,11 @@ const getClubFromUrl = () => {
   return newActiveClub || null;
 };
 
+const MOBILE_VIEW = {
+  LIST: { name: "List" },
+  MAP: { name: "Map" },
+};
+
 const App = () => {
   const [clubs, setClubs] = useState([]);
   const mapRef = useRef();
@@ -85,6 +90,8 @@ const App = () => {
   const [loaded, setLoaded] = useState(false);
   const [searchCenter, setSearchCenter] = useState();
   const [sortBy, setSortBy] = useState(SORT.DISTANCE);
+  const [mobileView, setMobileView] = useState(MOBILE_VIEW.MAP);
+  const { isMobile } = useMobile();
 
   useLayoutEffect(() => {
     const loader = new Loader({
@@ -173,11 +180,6 @@ const App = () => {
 
   if (!loaded || !initialLocation) return null;
 
-  // const sortAndFilter = {
-  //   filters: [],
-  //   sort: [{ nearest: searchCenter }],
-  // };
-
   return (
     <div
       css={css({
@@ -196,64 +198,96 @@ const App = () => {
         })}
       >
         <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
-        <p>A guided map to find table tennis clubs wherever you go.</p>
+        <p>Table tennis clubs all over the world.</p>
         <br />
         {initialLocation && (
           <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
         )}
+        <br />
+        {isMobile && (
+          <div>
+            <button
+              onClick={() =>
+                setMobileView(
+                  mobileView === MOBILE_VIEW.MAP
+                    ? MOBILE_VIEW.LIST
+                    : MOBILE_VIEW.MAP
+                )
+              }
+            >
+              Switch to{" "}
+              {mobileView === MOBILE_VIEW.MAP
+                ? MOBILE_VIEW.LIST.name
+                : MOBILE_VIEW.MAP.name}{" "}
+              View
+            </button>
+          </div>
+        )}
       </div>
       <div css={css({ display: "flex", flex: 1, overflow: "hidden" })}>
-        <div
-          css={css({
-            position: "relative",
-            background: "var(--contentBgColor)",
-            width: "50%",
-            maxWidth: 450,
-            padding: 20,
-            borderRight: "10px solid var(--bgColor)",
-          })}
-        >
+        {(!isMobile || mobileView === MOBILE_VIEW.LIST) && (
           <div
             css={css({
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              paddingBottom: 10,
+              position: "relative",
+              background: "var(--contentBgColor)",
+              width: isMobile ? "100%" : "50%",
+              maxWidth: 450,
+              padding: 20,
+              borderRight: isMobile ? "none" : "10px solid var(--bgColor)",
             })}
           >
-            <label css={css({ marginRight: 5 })}>sorted by </label>
-            <label css={css({ flex: 1 })}>
-              <Select
-                value={SORT_OPTIONS.find((s) => s.value === sortBy)}
-                options={SORT_OPTIONS}
-                onChange={(option) => {
-                  setSortBy(option.value);
-                }}
-                isSearchable={false}
-                styles={{
-                  container: (provided, state) => ({
-                    ...provided,
-                    maxWidth: 200,
-                  }),
-                }}
+            <div
+              css={css({
+                display: "flex",
+                width: "100%",
+                alignItems: "center",
+                paddingBottom: 10,
+              })}
+            >
+              <label css={css({ marginRight: 5 })}>sorted by </label>
+              <label css={css({ flex: 1 })}>
+                <Select
+                  value={SORT_OPTIONS.find((s) => s.value === sortBy)}
+                  options={SORT_OPTIONS}
+                  onChange={(option) => {
+                    setSortBy(option.value);
+                  }}
+                  isSearchable={false}
+                  styles={{
+                    container: (provided, state) => ({
+                      ...provided,
+                      maxWidth: 200,
+                    }),
+                  }}
+                />
+              </label>
+            </div>
+            <ClubList clubs={sortedClubs} setActiveClub={setActiveClub} />
+            {activeClub && (
+              <ClubDetail
+                club={activeClub}
+                onClose={() => setActiveClub(null)}
               />
-            </label>
+            )}
           </div>
-          <ClubList clubs={sortedClubs} setActiveClub={setActiveClub} />
-          {activeClub && (
-            <ClubDetail club={activeClub} onClose={() => setActiveClub(null)} />
-          )}
-        </div>
-        <div css={css({ flex: 1 })}>
-          <ClubMap
-            mapRef={mapRef}
-            center={searchCenter}
-            clubs={clubs}
-            activeClub={activeClub}
-            setActiveClub={setActiveClub}
-            onChange={onBoundsChange}
-          />
-        </div>
+        )}
+        {(!isMobile || mobileView === MOBILE_VIEW.MAP) && (
+          <div css={css({ flex: 1, position: "relative" })}>
+            <ClubMap
+              mapRef={mapRef}
+              center={searchCenter}
+              clubs={sortedClubs}
+              activeClub={activeClub}
+              onChange={onBoundsChange}
+            />
+            {isMobile && activeClub && (
+              <ClubDetail
+                club={activeClub}
+                onClose={() => setActiveClub(null)}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
