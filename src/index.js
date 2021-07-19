@@ -118,8 +118,8 @@ const App = () => {
     let center = { lat: cachedLat, lng: cachedLng };
 
     if (!center.lat || !center.lng) {
-      const rnd = Math.floor(Math.random() * clubs.length);
-      const randomClub = clubs[rnd];
+      const rnd = Math.floor(Math.random() * rawClubs.length);
+      const randomClub = rawClubs[rnd];
       center = { lat: randomClub.lat, lng: randomClub.lng };
     }
 
