@@ -17,37 +17,17 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 import { css, jsx } from "@emotion/react";
 
-import ttClubs from "../data/tt-clubs";
+import rawClubs from "../data/tt-clubs";
 
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
-import { getClubScore, useMobile } from "./util";
+import { useMobile } from "./util";
 import Select from "react-select";
 
-let rawClubs = [];
-
-ttClubs.forEach((club) => {
-  if (!club.locations) {
-    rawClubs.push(club);
-    return;
-  }
-
-  club.locations.forEach((l) => {
-    rawClubs.push({
-      ...club,
-      ...l,
-    });
-  });
-});
-
-rawClubs = rawClubs
+const ttClubs = rawClubs
   .filter((club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng))
-  .filter((club) => !club.closed)
-  .map((club) => ({
-    ...club,
-    score: getClubScore(club),
-  }));
+  .filter((club) => !club.closed);
 
 const SORT = {
   DISTANCE: {
@@ -73,7 +53,7 @@ const SORT_OPTIONS = [
 
 const getClubFromUrl = () => {
   const clubId = location.hash.split("#")[1];
-  const newActiveClub = rawClubs.find((c) => c.id === clubId);
+  const newActiveClub = ttClubs.find((c) => c.id === clubId);
   return newActiveClub || null;
 };
 
@@ -118,8 +98,8 @@ const App = () => {
     let center = { lat: cachedLat, lng: cachedLng };
 
     if (!center.lat || !center.lng) {
-      const rnd = Math.floor(Math.random() * rawClubs.length);
-      const randomClub = rawClubs[rnd];
+      const rnd = Math.floor(Math.random() * ttClubs.length);
+      const randomClub = ttClubs[rnd];
       center = { lat: randomClub.lat, lng: randomClub.lng };
     }
 
@@ -169,7 +149,7 @@ const App = () => {
 
   const onBoundsChange = useCallback(
     (bounds) => {
-      const newClubs = rawClubs.filter((c) => {
+      const newClubs = ttClubs.filter((c) => {
         const inBounds = bounds.contains({ lat: c.lat, lng: c.lng });
         return inBounds;
       });
@@ -180,62 +160,62 @@ const App = () => {
 
   if (!loaded || !initialLocation) return null;
 
+  const Title = () => (
+    <div
+      css={css({
+        background: "var(--contentBgColor)",
+      })}
+    >
+      <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
+      <p>Table tennis clubs all over the world.</p>
+      <br />
+      {initialLocation && (
+        <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
+      )}
+      <br />
+      {isMobile && (
+        <div>
+          <button
+            onClick={() =>
+              setMobileView(
+                mobileView === MOBILE_VIEW.MAP
+                  ? MOBILE_VIEW.LIST
+                  : MOBILE_VIEW.MAP
+              )
+            }
+          >
+            Switch to{" "}
+            {mobileView === MOBILE_VIEW.MAP
+              ? MOBILE_VIEW.LIST.name
+              : MOBILE_VIEW.MAP.name}{" "}
+            View
+          </button>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div
       css={css({
-        maxWidth: 1200,
-        display: "flex",
-        flexDirection: "column",
         height: "100%",
         margin: "auto",
       })}
     >
-      <div
-        css={css({
-          background: "var(--contentBgColor)",
-          borderBottom: "10px solid var(--bgColor)",
-          padding: 20,
-        })}
-      >
-        <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
-        <p>Table tennis clubs all over the world.</p>
-        <br />
-        {initialLocation && (
-          <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
-        )}
-        <br />
-        {isMobile && (
-          <div>
-            <button
-              onClick={() =>
-                setMobileView(
-                  mobileView === MOBILE_VIEW.MAP
-                    ? MOBILE_VIEW.LIST
-                    : MOBILE_VIEW.MAP
-                )
-              }
-            >
-              Switch to{" "}
-              {mobileView === MOBILE_VIEW.MAP
-                ? MOBILE_VIEW.LIST.name
-                : MOBILE_VIEW.MAP.name}{" "}
-              View
-            </button>
-          </div>
-        )}
-      </div>
-      <div css={css({ display: "flex", flex: 1, overflow: "hidden" })}>
+      <div css={css({ display: "flex", height: "100%", overflow: "hidden" })}>
         {(!isMobile || mobileView === MOBILE_VIEW.LIST) && (
           <div
             css={css({
+              display: "flex",
+              flexDirection: "column",
               position: "relative",
               background: "var(--contentBgColor)",
               width: isMobile ? "100%" : "50%",
               maxWidth: 450,
               padding: 20,
-              borderRight: isMobile ? "none" : "10px solid var(--bgColor)",
             })}
           >
+            <Title />
             <div
               css={css({
                 display: "flex",
@@ -273,6 +253,7 @@ const App = () => {
         )}
         {(!isMobile || mobileView === MOBILE_VIEW.MAP) && (
           <div css={css({ flex: 1, position: "relative" })}>
+            {isMobile && <Title />}
             <ClubMap
               mapRef={mapRef}
               center={searchCenter}

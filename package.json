@@ -30,6 +30,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "generate:map-data": "node ./scripts/generate-map-data.js",
-    "dev": "NODE_ENV=development webpack serve"
+    "dev": "NODE_ENV=development webpack serve",
+    "check-clubs": "node ./scripts/check-club-data"
   }
 }

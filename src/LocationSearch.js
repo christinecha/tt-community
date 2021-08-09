@@ -41,9 +41,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   });
 
   return (
-    <div
-      css={css({ display: "flex", flexDirection: isMobile ? "column" : "row" })}
-    >
+    <div css={css({ display: "flex", flexDirection: "column" })}>
       <p css={css({ marginRight: 10 })}>Find a club near:</p>
       <Combobox onSelect={handleSelect} aria-labelledby="demo">
         <ComboboxInput

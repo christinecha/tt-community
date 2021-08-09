@@ -9,7 +9,9 @@ export const ClubList = ({ clubs, setActiveClub }) => {
     <div
       css={css({
         overflowY: "auto",
-        height: "100%",
+        overflowX: "hidden",
+        flex: 1,
+        padding: 0,
         ["&::-webkit-scrollbar"]: {
           width: 0 /* Remove scrollbar space */,
           background:
@@ -19,7 +21,6 @@ export const ClubList = ({ clubs, setActiveClub }) => {
     >
       <ol
         css={css({
-          paddingBottom: 30,
           listStyle: "none",
           paddingLeft: 0,
         })}
@@ -34,8 +35,6 @@ export const ClubList = ({ clubs, setActiveClub }) => {
               key={club.id}
               css={css({
                 marginBottom: 10,
-                borderLeft: "2px solid var(--bgColor)",
-                paddingLeft: 10,
               })}
             >
               <a css={css({ textDecoration: "none" })} href={`#${club.id}`}>

@@ -1,4 +1,4 @@
-export const CLUB_TRAITS = {
+const CLUB_TRAITS = {
   PERMANENCE: "permanence",
   HOURS: "hours",
   CEILINGS: "ceilings",
@@ -19,7 +19,7 @@ export const CLUB_TRAITS = {
 
 const CT = CLUB_TRAITS;
 
-export const TRAIT_DATA = {
+const TRAIT_DATA = {
   [CT.PERMANENCE]: {
     color: "blue",
     name: "Permanent Location",
@@ -164,4 +164,9 @@ export const TRAIT_DATA = {
       2: "This club employs professional cleaning & maintenance staff to keep things in excellent condition.",
     },
   },
+};
+
+module.exports = {
+  CLUB_TRAITS,
+  TRAIT_DATA,
 };

@@ -38,13 +38,18 @@ export const ClubDetail = ({ club, onClose }) => {
           width: "100%",
           height: "100%",
           background: "var(--contentBgColor)",
-          padding: 20,
-          boxSizing: "border-box",
           transition: "transform 200ms ease-in-out",
           transform: `translate3d(${ready ? "0" : "-100%"},0,0)`,
         })}
       >
-        <div css={css({ height: "100%", overflowX: "hidden" })}>
+        <div
+          css={css({
+            height: "100%",
+            overflowX: "hidden",
+            padding: 20,
+            boxSizing: "border-box",
+          })}
+        >
           <a
             css={css({
               cursor: "pointer",

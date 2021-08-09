@@ -1,4 +1,4 @@
-import { CLUB_TRAITS as CT } from "./club-traits";
+const { CLUB_TRAITS: CT } = require("../club-traits");
 
 const traitsTemplate = {
   [CT.PERMANENCE]: undefined,
@@ -19,7 +19,7 @@ const traitsTemplate = {
   [CT.MAINTENANCE]: undefined,
 };
 
-export default [
+module.exports = [
   // {
   //   name: "[Unknown Name]",
   //   id: "beijing-ttc",
@@ -33,40 +33,7 @@ export default [
   //   attachments: "",
   //   lastModified: "9/24/2019 11:21am",
   // },
-  {
-    name: "Absalon",
-    id: "absalon-cph",
-    location: "Copenhagen",
-    type: "Cafe",
-    tags: "Casual Play",
-    pricePerDay: "",
-    address: "Sønder Blvd. 73, 1720 København, Denmark",
-    website: "https://absaloncph.dk",
-    notes: "",
-    attachments: "",
-    lastModified: "6/27/2019 7:48pm",
-    visited: true,
-    lat: 55.66549495301967,
-    lng: 12.550207525563831,
-    traits: {
-      [CT.PERMANENCE]: 0,
-      [CT.HOURS]: 0,
-      [CT.CEILINGS]: 2,
-      [CT.FLOORING]: 0,
-      [CT.LIGHTING]: 1,
-      [CT.COURT_SIZE]: 0,
-      [CT.BARRIERS]: 0,
-      [CT.GROUP_TRAINING]: 0,
-      [CT.WALKINS]: 2,
-      [CT.PRO_COACHES]: 0,
-      [CT.COMPETITIVE_LEVEL]: 0,
-      [CT.TOURNAMENTS]: 0,
-      [CT.PRO_TABLES]: 0,
-      [CT.WEATHER_CONTROL]: 2,
-      [CT.ACCESSIBILITY]: undefined,
-      [CT.MAINTENANCE]: undefined,
-    },
-  },
+
   {
     name: "Alameda Table Tennis Club",
     id: "alameda-ttc",
@@ -525,23 +492,7 @@ export default [
     closed: true,
     visited: true,
   },
-  {
-    name: "Escuela de Tenis de Mesa de Esteban Sevilla",
-    id: "tenis-de-mesa-esteban-sevilla",
-    location: "Quito",
-    type: "Multipurpose Space",
-    tags: "Private Club,Coaching Available",
-    pricePerDay: "$30",
-    address: "Chaupicruz, Quito 170521, Ecuador",
-    website: "https://pingpongpower.wordpress.com/",
-    notes: "",
-    attachments:
-      "1569269354402.jpg (https://dl.airtable.com/.attachments/b77173901b5f427ef516984d26373312/dcde2808/1569269354402.jpg)",
-    lastModified: "9/23/2019 4:09pm",
-    visited: true,
-    lat: -0.163266,
-    lng: -78.488514,
-  },
+
   {
     name: "Fat Cat",
     id: "fat-cat",

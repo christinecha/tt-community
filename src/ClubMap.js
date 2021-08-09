@@ -10,7 +10,7 @@ import { getGeocode, getLatLng } from "use-places-autocomplete";
 import ReactDOM from "react-dom";
 import { css, jsx } from "@emotion/react";
 
-import ttClubs from "../data/tt-clubs";
+import ttClubs from "../data/tt-clubs/us";
 
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
@@ -155,7 +155,6 @@ export const ClubMap = ({ clubs, center, activeClub, onChange, mapRef }) => {
       css={css({
         width: "100%",
         height: "100%",
-        border: "10px solid var(--contentBgColor)",
         boxSizing: "border-box",
       })}
     ></div>

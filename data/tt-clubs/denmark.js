@@ -1,0 +1,38 @@
+const { CLUB_TRAITS: CT } = require("../club-traits");
+
+module.exports = [
+  {
+    name: "Absalon",
+    id: "absalon-cph",
+    location: "Copenhagen",
+    type: "Cafe",
+    tags: "Casual Play",
+    pricePerDay: "",
+    address: "Sønder Blvd. 73, 1720 København, Denmark",
+    website: "https://absaloncph.dk",
+    notes: "",
+    attachments: "",
+    lastModified: "6/27/2019 7:48pm",
+    visited: true,
+    lat: 55.66549495301967,
+    lng: 12.550207525563831,
+    traits: {
+      [CT.PERMANENCE]: 0,
+      [CT.HOURS]: 0,
+      [CT.CEILINGS]: 2,
+      [CT.FLOORING]: 0,
+      [CT.LIGHTING]: 1,
+      [CT.COURT_SIZE]: 0,
+      [CT.BARRIERS]: 0,
+      [CT.GROUP_TRAINING]: 0,
+      [CT.WALKINS]: 2,
+      [CT.PRO_COACHES]: 0,
+      [CT.COMPETITIVE_LEVEL]: 0,
+      [CT.TOURNAMENTS]: 0,
+      [CT.PRO_TABLES]: 0,
+      [CT.WEATHER_CONTROL]: 2,
+      [CT.ACCESSIBILITY]: undefined,
+      [CT.MAINTENANCE]: undefined,
+    },
+  },
+];
