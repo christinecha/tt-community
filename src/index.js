@@ -158,44 +158,51 @@ const App = () => {
     [clubs]
   );
 
-  if (!loaded || !initialLocation) return null;
-
-  const Title = () => (
-    <div
-      css={css({
-        background: "var(--contentBgColor)",
-        padding: isMobile && mobileView === MOBILE_VIEW.MAP ? 10 : 0,
-        boxSizing: "border-box",
-      })}
-    >
-      <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
-      <p>Table tennis clubs all over the world.</p>
-      <br />
-      {initialLocation && (
-        <LocationSearch onChange={onSearch} defaultValue={initialLocation} />
-      )}
-      <br />
-      {isMobile && (
-        <div css={css({ marginBottom: 10 })}>
-          <button
-            onClick={() =>
-              setMobileView(
-                mobileView === MOBILE_VIEW.MAP
-                  ? MOBILE_VIEW.LIST
-                  : MOBILE_VIEW.MAP
-              )
-            }
-          >
-            Switch to{" "}
-            {mobileView === MOBILE_VIEW.MAP
-              ? MOBILE_VIEW.LIST.name
-              : MOBILE_VIEW.MAP.name}{" "}
-            View
-          </button>
+  const Title = useMemo(
+    () => () =>
+      (
+        <div
+          css={css({
+            background: "var(--contentBgColor)",
+            padding: isMobile && mobileView === MOBILE_VIEW.MAP ? 10 : 0,
+            boxSizing: "border-box",
+          })}
+        >
+          <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
+          <p>Table tennis clubs all over the world.</p>
+          <br />
+          {initialLocation && (
+            <LocationSearch
+              onChange={onSearch}
+              defaultValue={initialLocation}
+            />
+          )}
+          <br />
+          {isMobile && (
+            <div css={css({ marginBottom: 10 })}>
+              <button
+                onClick={() =>
+                  setMobileView(
+                    mobileView === MOBILE_VIEW.MAP
+                      ? MOBILE_VIEW.LIST
+                      : MOBILE_VIEW.MAP
+                  )
+                }
+              >
+                Switch to{" "}
+                {mobileView === MOBILE_VIEW.MAP
+                  ? MOBILE_VIEW.LIST.name
+                  : MOBILE_VIEW.MAP.name}{" "}
+                View
+              </button>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      ),
+    [initialLocation, onSearch, isMobile, mobileView]
   );
+
+  if (!loaded || !initialLocation) return null;
 
   return (
     <div
