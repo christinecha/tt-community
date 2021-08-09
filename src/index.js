@@ -164,6 +164,8 @@ const App = () => {
     <div
       css={css({
         background: "var(--contentBgColor)",
+        padding: isMobile && mobileView === MOBILE_VIEW.MAP ? 10 : 0,
+        boxSizing: "border-box",
       })}
     >
       <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
@@ -174,7 +176,7 @@ const App = () => {
       )}
       <br />
       {isMobile && (
-        <div>
+        <div css={css({ marginBottom: 10 })}>
           <button
             onClick={() =>
               setMobileView(
@@ -212,7 +214,9 @@ const App = () => {
               background: "var(--contentBgColor)",
               width: isMobile ? "100%" : "50%",
               maxWidth: 450,
-              padding: 20,
+              padding: isMobile ? 10 : 20,
+              paddingBottom: isMobile ? 0 : 20,
+              boxSizing: "border-box",
             })}
           >
             <Title />
@@ -252,7 +256,7 @@ const App = () => {
           </div>
         )}
         {(!isMobile || mobileView === MOBILE_VIEW.MAP) && (
-          <div css={css({ flex: 1, position: "relative" })}>
+          <div css={css({ flex: 1, position: "relative", width: "100%" })}>
             {isMobile && <Title />}
             <ClubMap
               mapRef={mapRef}
