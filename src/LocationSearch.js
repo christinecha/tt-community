@@ -23,7 +23,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
     clearSuggestions,
   } = usePlacesAutocomplete({ defaultValue });
 
-  const { isMobile } = useMobile();
+  const isMobile = useMobile();
 
   const handleInput = (e) => {
     setValue(e.target.value);

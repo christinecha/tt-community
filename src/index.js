@@ -22,7 +22,7 @@ import rawClubs from "../data/tt-clubs";
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
-import { useMobile } from "./util";
+import { useMobile, MobileProvider } from "./util";
 import Select from "react-select";
 
 const ttClubs = rawClubs
@@ -71,7 +71,7 @@ const App = () => {
   const [searchCenter, setSearchCenter] = useState();
   const [sortBy, setSortBy] = useState(SORT.DISTANCE);
   const [mobileView, setMobileView] = useState(MOBILE_VIEW.MAP);
-  const { isMobile } = useMobile();
+  const isMobile = useMobile();
 
   useLayoutEffect(() => {
     const loader = new Loader({
@@ -287,4 +287,9 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <MobileProvider>
+    <App />
+  </MobileProvider>,
+  document.getElementById("app")
+);
