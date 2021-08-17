@@ -111,20 +111,22 @@ const App = () => {
     });
   }, [loaded, mapRef]);
 
-  const onSearch = (placeId) => {
-    getGeocode({ placeId })
-      .then((results) => {
-        const match = results[0];
-        getLatLng(match).then((latLng) => {
-          const { lat, lng } = latLng;
-          setSearchCenter(latLng);
-          mapRef.current.fitBounds(match.geometry.viewport);
+  const onSearch = useCallback(
+    (placeId) => {
+      getGeocode({ placeId })
+        .then((results) => {
+          const match = results[0];
+          getLatLng(match).then((latLng) => {
+            setSearchCenter(latLng);
+            mapRef.current.fitBounds(match.geometry.viewport);
+          });
+        })
+        .catch((error) => {
+          console.log("Error: ", error);
         });
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
-  };
+    },
+    [mapRef]
+  );
 
   const sortedClubs = useMemo(() => {
     if (!searchCenter) return [];

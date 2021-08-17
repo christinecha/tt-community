@@ -44,7 +44,7 @@ export const ClubStars = ({ score }) => {
         paddingTop: 2,
         paddingBottom: 2,
         boxSizing: "border-box",
-        fontSize: 11,
+        fontSize: "0.9rem",
         margin: 2,
       })}
     >

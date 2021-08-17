@@ -37,6 +37,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   };
 
   const ref = useOnclickOutside(() => {
+    console.log("click out");
     clearSuggestions();
   });
 
@@ -54,7 +55,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             border: "none",
             color: "var(--contentColor)",
             fontFamily: "Muli, sans-serif",
-            fontSize: 16,
+            fontSize: "1rem",
             borderBottom: "2px solid var(--bgColor)",
             maxWidth: "90%",
             width: 400,

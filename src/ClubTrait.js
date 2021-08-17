@@ -26,7 +26,7 @@ export const ClubTrait = ({ id, value, full = false }) => {
         paddingTop: 2,
         paddingBottom: 2,
         boxSizing: "border-box",
-        fontSize: 11,
+        fontSize: "0.9rem",
         display: "inline-block",
         margin: 2,
       })}
