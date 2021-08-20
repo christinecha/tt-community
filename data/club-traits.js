@@ -1,6 +1,7 @@
 const CLUB_TRAITS = {
   PERMANENCE: "permanence",
   HOURS: "hours",
+  CLUB_SIZE: "club-size",
   CEILINGS: "ceilings",
   FLOORING: "flooring",
   LIGHTING: "lighting",
@@ -22,7 +23,7 @@ const CT = CLUB_TRAITS;
 const TRAIT_DATA = {
   [CT.PERMANENCE]: {
     color: "blue",
-    name: "Permanent Location",
+    name: "Permanence",
     options: {
       0: "Multipurpose space.",
       1: "A section of the facility is always dedicated to table tennis.",
@@ -31,11 +32,19 @@ const TRAIT_DATA = {
   },
   [CT.HOURS]: {
     color: "pink",
-    name: "Open 5+ Days a Week",
+    name: "Hours",
     options: {
       0: "There are limited hours (not designated, or only once a week).",
       1: "There are reliable hours for table tennis more than once a week.",
       2: "The club is open 5-7 days a week with reliable hours.",
+    },
+  },
+  [CT.CLUB_SIZE]: {
+    name: "Club Size",
+    options: {
+      0: "There are only 1-4 tables at this location.",
+      1: "There are 5-10 tables at this location.",
+      2: "There are more than 10 tables at this location",
     },
   },
   [CT.CEILINGS]: {

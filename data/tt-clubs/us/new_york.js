@@ -20,6 +20,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 1,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 1,
@@ -55,6 +56,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 0,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 0,
@@ -125,6 +127,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 1,
       [CT.CEILINGS]: 2,
       [CT.FLOORING]: 2,
       [CT.LIGHTING]: 2,
@@ -161,6 +164,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 1,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 2,
       [CT.LIGHTING]: 1,
@@ -212,6 +216,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 1,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 0,
@@ -246,6 +251,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 1,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 0,
@@ -273,6 +279,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 0,
       [CT.CEILINGS]: 1,
       [CT.FLOORING]: 2,
       [CT.LIGHTING]: 2,
@@ -312,6 +319,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 2,
       [CT.CEILINGS]: 2,
       [CT.FLOORING]: 2,
       [CT.LIGHTING]: 2,
@@ -350,6 +358,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 2,
       [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 0,
       [CT.CEILINGS]: 2,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 1,
