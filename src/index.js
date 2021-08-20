@@ -112,8 +112,8 @@ const App = () => {
 
     getGeocode({ location: center }).then((results) => {
       const match = results[0];
-      setInitialLocation(match.formatted_address);
       setSearchCenter(center);
+      setInitialLocation(match.formatted_address);
       mapRef.current.setZoom(cachedZoom || 9);
     });
   }, [loaded, mapRef]);
@@ -124,7 +124,7 @@ const App = () => {
         .then((results) => {
           const match = results[0];
           getLatLng(match).then((latLng) => {
-            setSearchCenter(latLng);
+            mapRef.current.setCenter(latLng);
             mapRef.current.fitBounds(match.geometry.viewport);
           });
         })
@@ -136,14 +136,13 @@ const App = () => {
   );
 
   const sortedClubs = useMemo(() => {
-    if (!searchCenter) return [];
-
-    cacheMap(searchCenter, mapRef.current.getZoom());
+    if (!mapRef.current) return [];
+    const center = mapRef.current.getCenter();
 
     const getDist = (club) => {
       return getDistance(
         { latitude: club.lat, longitude: club.lng },
-        { latitude: searchCenter.lat, longitude: searchCenter.lng }
+        { latitude: center.lat(), longitude: center.lng() }
       );
     };
 
@@ -153,7 +152,7 @@ const App = () => {
         distance: getDist(c),
       }))
       .sort(sortBy.fn);
-  }, [clubs, sortBy, searchCenter]);
+  }, [clubs, sortBy]);
 
   const onBoundsChange = useCallback(() => {
     const bounds = mapRef.current.getBounds();
@@ -285,7 +284,7 @@ const App = () => {
             {isMobile && <Title />}
             <ClubMap
               mapRef={mapRef}
-              center={searchCenter}
+              initialCenter={searchCenter}
               clubs={sortedClubs}
               activeClub={activeClub}
               onChange={onBoundsChange}

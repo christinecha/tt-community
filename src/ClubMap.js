@@ -22,14 +22,25 @@ const PINS = {
   ACTIVE: "./pinpong-black.svg",
 };
 
-export const ClubMap = ({ clubs, center, activeClub, onChange, mapRef }) => {
+export const ClubMap = ({
+  clubs,
+  initialCenter,
+  activeClub,
+  onChange,
+  mapRef,
+}) => {
   const markers = useRef({}).current;
   const infowindows = useRef([]).current;
 
   useLayoutEffect(() => {
+    const lastCenter = mapRef.current ? mapRef.current.getCenter() : null;
+    const center = lastCenter
+      ? { lat: lastCenter.lat(), lng: lastCenter.lng() }
+      : initialCenter;
+    const zoom = mapRef.current ? mapRef.current.getZoom() : 4;
     const map = new google.maps.Map(document.getElementById("map"), {
       center,
-      zoom: 4,
+      zoom,
       mapTypeControl: false,
     });
 
@@ -140,13 +151,6 @@ export const ClubMap = ({ clubs, center, activeClub, onChange, mapRef }) => {
     });
     activeMarker.setZIndex(2);
   }, [activeClub]);
-
-  useEffect(() => {
-    if (!mapRef.current || !center) return;
-    mapRef.current.setCenter({
-      ...center,
-    });
-  }, [center, mapRef.current]);
 
   return (
     <div
