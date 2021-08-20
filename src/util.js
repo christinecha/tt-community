@@ -12,7 +12,7 @@ export const MobileProvider = ({ children }) => {
   const [isMobile, setIsMobile] = useState(getMobile());
 
   useLayoutEffect(() => {
-    if (isMobile) {
+    if (isMobile && navigator.userAgentData.mobile) {
       const innerHeight = window.innerHeight;
       document.body.style.height = `${innerHeight}px`;
     }
