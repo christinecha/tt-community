@@ -3,16 +3,6 @@ import React, { useContext, useLayoutEffect, useState } from "react";
 
 const getMobile = () => {
   const isMobile = window.innerWidth < 768;
-
-  // Magic side effects
-  if (isMobile) {
-    const innerHeight = window.innerHeight;
-    console.log(innerHeight);
-    document.body.style.height = `${innerHeight}px`;
-  } else {
-    document.body.style.removeProperty("height");
-  }
-
   return isMobile;
 };
 
@@ -22,6 +12,11 @@ export const MobileProvider = ({ children }) => {
   const [isMobile, setIsMobile] = useState(getMobile());
 
   useLayoutEffect(() => {
+    if (isMobile) {
+      const innerHeight = window.innerHeight;
+      document.body.style.height = `${innerHeight}px`;
+    }
+
     const onResize = debounce(() => {
       const newIsMobile = getMobile();
       setIsMobile(newIsMobile);
@@ -31,7 +26,7 @@ export const MobileProvider = ({ children }) => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  });
+  }, []);
 
   return <Mobile.Provider value={isMobile}>{children}</Mobile.Provider>;
 };
