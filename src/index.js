@@ -184,7 +184,9 @@ const App = () => {
             boxSizing: "border-box",
           })}
         >
-          <h1 css={css({ margin: 0 })}>Table Tennis Community 🏓 🌏</h1>
+          <h1 css={css({ margin: 0, fontSize: isMobile ? 24 : "2rem" })}>
+            Table Tennis Community 🏓 🌏
+          </h1>
           <p>Where to play table tennis all over the world.</p>
           <br />
           {initialLocation && (
