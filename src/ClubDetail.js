@@ -97,7 +97,30 @@ export const ClubDetail = ({ club, onClose }) => {
           </div>
            */}
 
-          <p css={css({ lineHeight: 1.6 })}>{club.notes}</p>
+          {club.images && (
+            <div
+              css={css({
+                width: "100%",
+                display: "flex",
+                flexWrap: "wrap",
+              })}
+            >
+              {club.images.map((image) => (
+                <div
+                  css={css({
+                    width: "50%",
+                    paddingBottom: "50%",
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  })}
+                  key={image}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* <p css={css({ lineHeight: 1.6 })}>{club.notes}</p> */}
 
           <div
             css={css({

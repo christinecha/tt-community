@@ -222,7 +222,7 @@ const App = () => {
               position: "relative",
               background: "var(--contentBgColor)",
               width: isMobile ? "100%" : "50%",
-              maxWidth: 450,
+              maxWidth: 500,
               padding: isMobile ? 10 : 20,
               paddingBottom: isMobile ? 0 : 20,
               boxSizing: "border-box",
