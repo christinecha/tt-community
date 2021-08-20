@@ -184,8 +184,8 @@ const App = () => {
             boxSizing: "border-box",
           })}
         >
-          <h1 css={css({ margin: 0 })}>Table Tennis Travelers</h1>
-          <p>Table tennis clubs all over the world.</p>
+          <h1 css={css({ margin: 0 })}>Table Tennis Community 🏓 🌏</h1>
+          <p>Where to play table tennis all over the world.</p>
           <br />
           {initialLocation && (
             <LocationSearch
