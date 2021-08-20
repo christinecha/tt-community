@@ -301,8 +301,10 @@ module.exports = [
     website: "https://www.westchestertabletennis.com/",
     notes:
       "The biggest, best kept table tennis club in the Northeast USA is right here - in the little town of Pleasantville, New York. \n\nWith 19 tournament-quality tables, monthly USATT-sanctioned tournaments, this is probably our favorite club near home. Plus, $10 for a day pass for these professional conditions is an amazing deal.",
-    attachments:
-      "1552519031347 (1).jpg (https://dl.airtable.com/.attachments/161d755560f9a86ea053c7cfee7a8e5a/56624c37/15525190313471.jpg),49831358_262329234700358_7782508756213377500_n (1).jpg (https://dl.airtable.com/.attachments/7bf96c83b1b98aee8471147c95e20b81/7e7bb2b2/49831358_262329234700358_7782508756213377500_n1.jpg)",
+    images: [
+      "https://dl.airtable.com/.attachments/161d755560f9a86ea053c7cfee7a8e5a/56624c37/15525190313471.jpg",
+      "https://dl.airtable.com/.attachments/7bf96c83b1b98aee8471147c95e20b81/7e7bb2b2/49831358_262329234700358_7782508756213377500_n1.jpg",
+    ],
     lastModified: "5/30/2021 11:26pm",
     lat: 41.1326998386741,
     lng: -73.7893326442353,
@@ -338,8 +340,9 @@ module.exports = [
     website: "https://www.wangchenttc.com/",
     notes:
       "If you're on the Upper West Side (UWS), Wang Chen's is probably your best bet for table tennis. It's two floors. Upstairs has better conditions but quickly gets full during peak hours, since there's only 3 tables. The flooring is decent, the ceiling height is OK, but the space around the table is a bit cramped. Downstairs, although recently redone, is not quite as nice but gives you some overflow room.\n\nGood coaches, competitive players, and an overall high level of seriousness.\n\n$8 per hour, $15 for a day pass.",
-    attachments:
-      "1552518820656.jpg (https://dl.airtable.com/.attachments/189cb320a07d12930a43c9af64dad095/d81b3c1e/1552518820656.jpg)",
+    images: [
+      "https://dl.airtable.com/.attachments/189cb320a07d12930a43c9af64dad095/d81b3c1e/1552518820656.jpg",
+    ],
     lastModified: "5/30/2021 11:26pm",
     lat: 40.797566975004536,
     lng: -73.97049759450289,

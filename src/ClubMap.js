@@ -38,8 +38,7 @@ export const ClubMap = ({ clubs, center, activeClub, onChange, mapRef }) => {
 
   useEffect(() => {
     const debouncedOnChange = debounce(() => {
-      const bounds = mapRef.current.getBounds();
-      onChange(bounds);
+      onChange();
     }, 500);
     const handle = mapRef.current.addListener(
       "bounds_changed",

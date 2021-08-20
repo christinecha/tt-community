@@ -62,6 +62,12 @@ const MOBILE_VIEW = {
   MAP: { name: "Map" },
 };
 
+const cacheMap = (center, zoom) => {
+  window.localStorage.setItem("searchLat", center.lat);
+  window.localStorage.setItem("searchLng", center.lng);
+  window.localStorage.setItem("searchZoom", zoom);
+};
+
 const App = () => {
   const [clubs, setClubs] = useState([]);
   const mapRef = useRef();
@@ -94,6 +100,7 @@ const App = () => {
 
     const cachedLat = Number(window.localStorage.getItem("searchLat"));
     const cachedLng = Number(window.localStorage.getItem("searchLng"));
+    const cachedZoom = Number(window.localStorage.getItem("searchZoom"));
 
     let center = { lat: cachedLat, lng: cachedLng };
 
@@ -107,7 +114,7 @@ const App = () => {
       const match = results[0];
       setInitialLocation(match.formatted_address);
       setSearchCenter(center);
-      mapRef.current.setZoom(9);
+      mapRef.current.setZoom(cachedZoom || 9);
     });
   }, [loaded, mapRef]);
 
@@ -131,8 +138,7 @@ const App = () => {
   const sortedClubs = useMemo(() => {
     if (!searchCenter) return [];
 
-    window.localStorage.setItem("searchLat", searchCenter.lat);
-    window.localStorage.setItem("searchLng", searchCenter.lng);
+    cacheMap(searchCenter, mapRef.current.getZoom());
 
     const getDist = (club) => {
       return getDistance(
@@ -149,16 +155,24 @@ const App = () => {
       .sort(sortBy.fn);
   }, [clubs, sortBy, searchCenter]);
 
-  const onBoundsChange = useCallback(
-    (bounds) => {
-      const newClubs = ttClubs.filter((c) => {
-        const inBounds = bounds.contains({ lat: c.lat, lng: c.lng });
-        return inBounds;
-      });
-      setClubs(newClubs);
-    },
-    [clubs]
-  );
+  const onBoundsChange = useCallback(() => {
+    const bounds = mapRef.current.getBounds();
+    const center = mapRef.current.getCenter();
+
+    const newClubs = ttClubs.filter((c) => {
+      const inBounds = bounds.contains({ lat: c.lat, lng: c.lng });
+      return inBounds;
+    });
+
+    setClubs(newClubs);
+
+    const centerCoords = { lat: center.lat(), lng: center.lng() };
+    cacheMap(centerCoords, mapRef.current.getZoom());
+    getGeocode({ location: centerCoords }).then((results) => {
+      const match = results[0];
+      setInitialLocation(match.formatted_address);
+    });
+  }, []);
 
   const Title = useMemo(
     () => () =>

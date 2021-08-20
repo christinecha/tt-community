@@ -57,6 +57,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             fontFamily: "Muli, sans-serif",
             fontSize: "1rem",
             borderBottom: "2px solid var(--bgColor)",
+            marginTop: 5,
             maxWidth: "90%",
             width: 400,
             "&:focus": {
@@ -69,6 +70,12 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             },
           })}
         />
+
+        {value && (
+          <button onClick={() => setValue("")} data-plain>
+            ⨉
+          </button>
+        )}
 
         {status === "OK" && data.length && (
           <ComboboxPopover
