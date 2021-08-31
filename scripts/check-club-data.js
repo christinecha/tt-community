@@ -28,13 +28,12 @@ clubs.forEach((club, i) => {
     incomplete.push(club);
   }
 
-  if (
-    !club.traits ||
-    Object.values(CLUB_TRAITS).find(
-      (trait) => typeof club.traits[trait] === "undefined"
-    )
-  ) {
-    console.log(`[${ID}] Missing 1 or more traits.`);
+  const missingTraits = Object.values(CLUB_TRAITS).filter(
+    (trait) => typeof (club.traits || {})[trait] === "undefined"
+  );
+
+  if (!club.traits || missingTraits.length) {
+    console.log(`[${ID}] Missing ${missingTraits.length} trait(s).`);
     traitsMissing.push(club);
   }
 });

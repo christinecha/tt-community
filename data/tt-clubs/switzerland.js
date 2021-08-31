@@ -28,11 +28,31 @@ module.exports = [
     website: "https://www.sihlsports.ch/",
     notes:
       "You know you're addicted to table tennis when you travel 1-hour each way (from Zurich airport) to play during a layover... at 7 in the morning. \n\nThis place is not a table tennis club alone, but a multi-sports complex. If you book a table, you'll be placed in a squash room, which is actually perfect because you spend less time chasing the ball.\n\nNice space, super clean. We walked from the train station with our baggage which was a tiny bit scary (not a good pedestrian area) but it wasn't far.\n\nEverything is quite expensive in Switzerland, so at 25 Swiss Francs for an hour of play (per table, so ~$13 USD per person), we've got a pretty good deal.",
-    attachments:
-      "1547553482526.jpg (https://dl.airtable.com/.attachments/804c3fc08f7c9786d76bc0874d1bc254/85a78937/1547553482526.jpg)",
+    images: [
+      "https://dl.airtable.com/.attachments/804c3fc08f7c9786d76bc0874d1bc254/85a78937/1547553482526.jpg",
+    ],
     lastModified: "5/30/2021 11:26pm",
     visited: true,
     lat: 47.292358194851104,
     lng: 8.541408796947442,
+    traits: {
+      [CT.PERMANENCE]: 0,
+      [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 0,
+      [CT.CEILINGS]: 1,
+      [CT.FLOORING]: 0,
+      [CT.LIGHTING]: 2,
+      [CT.COURT_SIZE]: 1,
+      [CT.BARRIERS]: 2,
+      [CT.GROUP_TRAINING]: 0,
+      [CT.WALKINS]: 2,
+      [CT.PRO_COACHES]: 0,
+      [CT.COMPETITIVE_LEVEL]: 0,
+      [CT.TOURNAMENTS]: 0,
+      [CT.PRO_TABLES]: 1,
+      [CT.WEATHER_CONTROL]: 2,
+      [CT.ACCESSIBILITY]: undefined,
+      [CT.MAINTENANCE]: 2,
+    },
   },
 ];

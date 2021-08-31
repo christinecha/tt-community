@@ -199,7 +199,7 @@ module.exports = [
       [CT.FLOORING]: 2,
       [CT.LIGHTING]: 2,
       [CT.COURT_SIZE]: 2,
-      [CT.BARRIERS]: 2,
+      [CT.BARRIERS]: 1,
       [CT.GROUP_TRAINING]: 2,
       [CT.WALKINS]: 2,
       [CT.PRO_COACHES]: 2,
