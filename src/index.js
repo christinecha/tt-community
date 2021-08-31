@@ -126,6 +126,10 @@ const App = () => {
           getLatLng(match).then((latLng) => {
             mapRef.current.setCenter(latLng);
             mapRef.current.fitBounds(match.geometry.viewport);
+
+            console.log(mapRef.current.getZoom());
+            const zoom = Math.min(mapRef.current.getZoom(), 11);
+            mapRef.current.setZoom(zoom);
           });
         })
         .catch((error) => {

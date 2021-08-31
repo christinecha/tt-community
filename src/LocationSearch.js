@@ -37,7 +37,6 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   };
 
   const ref = useOnclickOutside(() => {
-    console.log("click out");
     clearSuggestions();
   });
 
