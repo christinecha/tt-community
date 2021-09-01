@@ -62,6 +62,11 @@ export const ClubMap = ({
   }, [onChange]);
 
   useEffect(() => {
+    const toHide = Object.keys(markers).filter(
+      (mKey) => !clubs.find((club) => club.id === mKey)
+    );
+    toHide.forEach((mKey) => [markers[mKey].setMap(null)]);
+
     clubs.forEach((club) => {
       const { lat, lng } = club;
       const isActive = (activeClub || {}).id === club.id;
@@ -92,6 +97,7 @@ export const ClubMap = ({
         marker.setZIndex(isActive ? 2 : 1);
       }
 
+      marker.setMap(mapRef.current);
       markers[club.id] = marker;
 
       const infowindow = new google.maps.InfoWindow({

@@ -40,6 +40,8 @@ module.exports = [
     visited: true,
     lat: 39.68846615863397,
     lng: -104.98785520195004,
+    closed: true,
+    website: "https://www.denverpong.com/",
   },
   {
     name: "Denver Table Tennis Alliance (DTTA)",

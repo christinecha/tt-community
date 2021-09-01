@@ -41,9 +41,21 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
   });
 
   return (
-    <div css={css({ display: "flex", flexDirection: "column" })}>
-      <p css={css({ marginRight: 10 })}>Find a club near:</p>
-      <Combobox onSelect={handleSelect} aria-labelledby="demo">
+    <div
+      css={css({
+        display: "flex",
+        flexDirection: isMobile ? "row" : "column",
+        marginTop: isMobile ? 10 : 20,
+      })}
+    >
+      <p css={css({ marginRight: 10, display: isMobile ? "none" : "block" })}>
+        Find a club near:
+      </p>
+      <Combobox
+        onSelect={handleSelect}
+        aria-labelledby="demo"
+        css={css({ flex: 1 })}
+      >
         <ComboboxInput
           value={value}
           onChange={handleInput}
@@ -57,8 +69,7 @@ export const LocationSearch = ({ onChange, defaultValue }) => {
             fontSize: "1rem",
             borderBottom: "2px solid var(--bgColor)",
             marginTop: 5,
-            maxWidth: "90%",
-            width: 400,
+            width: "90%",
             "&:focus": {
               outline: "none",
               borderBottom: "2px solid var(--contentColor)",

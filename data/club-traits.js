@@ -42,9 +42,9 @@ const TRAIT_DATA = {
   [CT.CLUB_SIZE]: {
     name: "Club Size",
     options: {
-      0: "There are only 1-4 tables at this location.",
-      1: "There are 5-10 tables at this location.",
-      2: "There are more than 10 tables at this location",
+      0: "There is space for 1-4 simultaneous matches at this location.",
+      1: "There is space for 5-10 simultaneous matches at this location.",
+      2: "There is space for more than 10 simultaneous matches at this location",
     },
   },
   [CT.CEILINGS]: {

@@ -23,33 +23,11 @@ import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
 import { useMobile, MobileProvider } from "./util";
-import Select from "react-select";
+import { FILTER_RATING, SORT, SortAndFilter } from "./SortAndFilter";
 
 const ttClubs = rawClubs
   .filter((club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng))
   .filter((club) => !club.closed);
-
-const SORT = {
-  DISTANCE: {
-    id: "distance",
-    name: "Distance",
-    fn: (a, b) => a.distance - b.distance,
-  },
-  RATING: {
-    id: "rating",
-    name: "Rating",
-    fn: (a, b) => {
-      if (b.score === undefined) return -1;
-      if (a.score === undefined) return 1;
-      return b.score - a.score;
-    },
-  },
-};
-
-const SORT_OPTIONS = [
-  { value: SORT.DISTANCE, label: SORT.DISTANCE.name },
-  { value: SORT.RATING, label: SORT.RATING.name },
-];
 
 const getClubFromUrl = () => {
   const clubId = location.hash.split("#")[1];
@@ -76,6 +54,7 @@ const App = () => {
   const [loaded, setLoaded] = useState(false);
   const [searchCenter, setSearchCenter] = useState();
   const [sortBy, setSortBy] = useState(SORT.DISTANCE);
+  const [filterRating, setFilterRating] = useState(FILTER_RATING.ALL);
   const [mobileView, setMobileView] = useState(MOBILE_VIEW.MAP);
   const isMobile = useMobile();
 
@@ -126,8 +105,6 @@ const App = () => {
           getLatLng(match).then((latLng) => {
             mapRef.current.setCenter(latLng);
             mapRef.current.fitBounds(match.geometry.viewport);
-
-            console.log(mapRef.current.getZoom());
             const zoom = Math.min(mapRef.current.getZoom(), 11);
             mapRef.current.setZoom(zoom);
           });
@@ -155,8 +132,9 @@ const App = () => {
         ...c,
         distance: getDist(c),
       }))
+      .filter(filterRating.fn)
       .sort(sortBy.fn);
-  }, [clubs, sortBy]);
+  }, [clubs, sortBy, filterRating]);
 
   const onBoundsChange = useCallback(() => {
     const bounds = mapRef.current.getBounds();
@@ -178,48 +156,49 @@ const App = () => {
   }, []);
 
   const Title = useMemo(
-    () => () =>
-      (
-        <div
-          css={css({
-            background: "var(--contentBgColor)",
-            padding: isMobile && mobileView === MOBILE_VIEW.MAP ? 10 : 0,
-            boxSizing: "border-box",
-          })}
-        >
-          <h1 css={css({ margin: 0, fontSize: isMobile ? 24 : "2rem" })}>
-            Table Tennis Community 🏓 🌏
-          </h1>
-          <p>Where to play table tennis all over the world.</p>
-          <br />
-          {initialLocation && (
-            <LocationSearch
-              onChange={onSearch}
-              defaultValue={initialLocation}
-            />
-          )}
-          <br />
-          {isMobile && (
-            <div css={css({ marginBottom: 10 })}>
-              <button
-                onClick={() =>
-                  setMobileView(
-                    mobileView === MOBILE_VIEW.MAP
-                      ? MOBILE_VIEW.LIST
-                      : MOBILE_VIEW.MAP
-                  )
-                }
-              >
-                Switch to{" "}
-                {mobileView === MOBILE_VIEW.MAP
-                  ? MOBILE_VIEW.LIST.name
-                  : MOBILE_VIEW.MAP.name}{" "}
-                View
-              </button>
-            </div>
-          )}
-        </div>
-      ),
+    () =>
+      ({ children }) =>
+        (
+          <div
+            css={css({
+              background: "var(--contentBgColor)",
+              padding: isMobile && mobileView === MOBILE_VIEW.MAP ? 10 : 0,
+              boxSizing: "border-box",
+            })}
+          >
+            <h1 css={css({ margin: 0, fontSize: isMobile ? 24 : "2rem" })}>
+              Table Tennis Community 🏓 🌏
+            </h1>
+            <p>Where to play table tennis all over the world.</p>
+            {initialLocation && (
+              <LocationSearch
+                onChange={onSearch}
+                defaultValue={initialLocation}
+              />
+            )}
+            <br />
+            {children}
+            {isMobile && (
+              <div css={css({ marginBottom: 10, marginTop: 5 })}>
+                <button
+                  onClick={() =>
+                    setMobileView(
+                      mobileView === MOBILE_VIEW.MAP
+                        ? MOBILE_VIEW.LIST
+                        : MOBILE_VIEW.MAP
+                    )
+                  }
+                >
+                  Switch to{" "}
+                  {mobileView === MOBILE_VIEW.MAP
+                    ? MOBILE_VIEW.LIST.name
+                    : MOBILE_VIEW.MAP.name}{" "}
+                  View
+                </button>
+              </div>
+            )}
+          </div>
+        ),
     [initialLocation, onSearch, isMobile, mobileView]
   );
 
@@ -247,33 +226,14 @@ const App = () => {
               boxSizing: "border-box",
             })}
           >
-            <Title />
-            <div
-              css={css({
-                display: "flex",
-                width: "100%",
-                alignItems: "center",
-                paddingBottom: 10,
-              })}
-            >
-              <label css={css({ marginRight: 5 })}>sorted by </label>
-              <label css={css({ flex: 1 })}>
-                <Select
-                  value={SORT_OPTIONS.find((s) => s.value === sortBy)}
-                  options={SORT_OPTIONS}
-                  onChange={(option) => {
-                    setSortBy(option.value);
-                  }}
-                  isSearchable={false}
-                  styles={{
-                    container: (provided, state) => ({
-                      ...provided,
-                      maxWidth: 200,
-                    }),
-                  }}
-                />
-              </label>
-            </div>
+            <Title>
+              <SortAndFilter
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+                filterRating={filterRating}
+                setFilterRating={setFilterRating}
+              />
+            </Title>
             <ClubList clubs={sortedClubs} setActiveClub={setActiveClub} />
             {activeClub && (
               <ClubDetail
@@ -284,8 +244,24 @@ const App = () => {
           </div>
         )}
         {(!isMobile || mobileView === MOBILE_VIEW.MAP) && (
-          <div css={css({ flex: 1, position: "relative", width: "100%" })}>
-            {isMobile && <Title />}
+          <div
+            css={css({
+              flex: 1,
+              position: "relative",
+              width: "100%",
+              background: "var(--contentBgColor)",
+            })}
+          >
+            {isMobile && (
+              <Title>
+                <SortAndFilter
+                  sortBy={sortBy}
+                  setSortBy={setSortBy}
+                  filterRating={filterRating}
+                  setFilterRating={setFilterRating}
+                />
+              </Title>
+            )}
             <ClubMap
               mapRef={mapRef}
               initialCenter={searchCenter}

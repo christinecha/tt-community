@@ -1,4 +1,5 @@
 const { CLUB_TRAITS: CT } = require("../../club-traits");
+const alabama = require("./alabama");
 const california = require("./california");
 const hawaii = require("./hawaii");
 const new_york = require("./new_york");
@@ -15,6 +16,7 @@ const rhode_island = require("./rhode_island");
 const oregon = require("./oregon");
 
 module.exports = [
+  ...alabama,
   ...california,
   ...hawaii,
   ...new_york,
@@ -55,6 +57,25 @@ module.exports = [
     lng: -77.2267826345088,
     quality: 8,
     visited: true,
+    traits: {
+      [CT.PERMANENCE]: 2,
+      [CT.HOURS]: 2,
+      [CT.CLUB_SIZE]: 2,
+      [CT.CEILINGS]: 2,
+      [CT.FLOORING]: 2,
+      [CT.LIGHTING]: 2,
+      [CT.COURT_SIZE]: 2,
+      [CT.BARRIERS]: 2,
+      [CT.GROUP_TRAINING]: 2,
+      [CT.WALKINS]: 2,
+      [CT.PRO_COACHES]: 2,
+      [CT.COMPETITIVE_LEVEL]: 2,
+      [CT.TOURNAMENTS]: 2,
+      [CT.PRO_TABLES]: 2,
+      [CT.WEATHER_CONTROL]: 2,
+      [CT.ACCESSIBILITY]: 2,
+      [CT.MAINTENANCE]: 2,
+    },
   },
 
   {

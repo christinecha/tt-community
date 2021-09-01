@@ -34,7 +34,7 @@ export const ClubList = ({ clubs, setActiveClub }) => {
             <li
               key={club.id}
               css={css({
-                marginBottom: 10,
+                marginBottom: 15,
               })}
             >
               <a css={css({ textDecoration: "none" })} href={`#${club.id}`}>
@@ -53,18 +53,18 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                   onClick={() => setActiveClub(club)}
                 >
                   {num}. {club.name}
-                  <span css={css({ opacity: 0, marginLeft: 5 })}>→</span>
+                  {"\u00A0"}
+                  <ClubStars score={club.score} />
                 </h3>
               </a>
-              <div css={css({ margin: -2, marginTop: 5 })}>
-                <div>
-                  <ClubStars score={club.score} />
-                </div>
-                {/* {Object.entries(club.traits).map(([id, value]) => {
-                    if (!value || value < 2) return null;
+              {/* <div css={css({ margin: -2, marginTop: 5 })}>
+                {Object.entries(club.traits)
+                  .filter(([_, value]) => value === 2)
+                  .slice(0, 2)
+                  .map(([id, value]) => {
                     return <ClubTrait key={id} id={id} value={value} />;
-                  })} */}
-              </div>
+                  })}
+              </div> */}
               <p css={css({ marginTop: 5 })}>{club.address}</p>
               <label>{distMi.toFixed(1)} miles away</label>
             </li>
