@@ -15,7 +15,7 @@ const CLUB_TRAITS = {
   PRO_TABLES: "pro-tables",
   WEATHER_CONTROL: "weather-control",
   ACCESSIBILITY: "accessibility",
-  MAINTENANCE: "maintenance",
+  // MAINTENANCE: "maintenance",
 };
 
 const CT = CLUB_TRAITS;
@@ -49,7 +49,7 @@ const TRAIT_DATA = {
   },
   [CT.CEILINGS]: {
     color: "yellow",
-    name: "High Ceilings",
+    name: "Ceiling Height",
     options: {
       0: "The low ceilings do not allow for high balls.",
       1: "The ceilings are high enough for most competitive players.",
@@ -58,7 +58,7 @@ const TRAIT_DATA = {
   },
   [CT.FLOORING]: {
     color: "yellow",
-    name: "Pro Flooring",
+    name: "Flooring",
     options: {
       0: "There is no sport flooring.",
       1: "There is rubberized flooring on some tables.",
@@ -67,7 +67,7 @@ const TRAIT_DATA = {
   },
   [CT.LIGHTING]: {
     color: "yellow",
-    name: "Pro Lighting",
+    name: "Lighting",
     options: {
       0: "The courts are not well lit; it might be hard to see the ball clearly.",
       1: "The courts have good enough lighting for most competitive players.",
@@ -76,7 +76,7 @@ const TRAIT_DATA = {
   },
   [CT.COURT_SIZE]: {
     color: "yellow",
-    name: "Pro-Sized Courts",
+    name: "Court Size",
     options: {
       0: "Most courts are too small for advanced competitive play.",
       1: "Most courts are large enough for advanced competitive play.",
@@ -85,7 +85,7 @@ const TRAIT_DATA = {
   },
   [CT.BARRIERS]: {
     color: "yellow",
-    name: "Complete Court Barriers",
+    name: "Court Barriers",
     options: {
       0: "There are few or no barriers available.",
       1: "There are some barriers separating most playing areas.",
@@ -121,7 +121,7 @@ const TRAIT_DATA = {
   },
   [CT.COMPETITIVE_LEVEL]: {
     color: "yellow",
-    name: "High Competitive Level",
+    name: "Competitive Level",
     options: {
       0: "There are no or very few advanced competitive players who play here regularly.",
       1: "There are advanced competitive players who play here regularly.",
@@ -130,7 +130,7 @@ const TRAIT_DATA = {
   },
   [CT.TOURNAMENTS]: {
     color: "yellow",
-    name: "Official Tournaments",
+    name: "Tournaments & Leagues",
     options: {
       0: "There are no regular tournaments and/or league play.",
       1: "There are regularly organized tournaments and/or league play.",
@@ -141,9 +141,9 @@ const TRAIT_DATA = {
     color: "yellow",
     name: "Table Quality",
     options: {
-      0: "The tables are not of competition-level quality or condition.",
-      1: "The tables are of good enough quality and condition for advanced amateur competition.",
-      2: "The tables are of professional quality and condition.",
+      0: "Most tables are not suitable for competitive play in quality and/or condition.",
+      1: "Most tables are good enough quality and condition for competitive play.",
+      2: "Most tables are good enough quality and condition for competitive play; some can be used for professional tournaments.",
     },
   },
   [CT.WEATHER_CONTROL]: {
@@ -164,15 +164,15 @@ const TRAIT_DATA = {
       2: "This club is fully wheelchair-accessible.",
     },
   },
-  [CT.MAINTENANCE]: {
-    color: "yellow",
-    name: "Clean & well-maintained",
-    options: {
-      0: "This club is minimally maintained or cleaned.",
-      1: "This club is regularly maintained and cleaned to satisfactory conditions.",
-      2: "This club employs professional cleaning & maintenance staff to keep things in excellent condition.",
-    },
-  },
+  // [CT.MAINTENANCE]: {
+  //   color: "yellow",
+  //   name: "Clean & well-maintained",
+  //   options: {
+  //     0: "This club is minimally maintained or cleaned.",
+  //     1: "This club is regularly maintained and cleaned to satisfactory conditions.",
+  //     2: "This club employs professional cleaning & maintenance staff to keep things in excellent condition.",
+  //   },
+  // },
 };
 
 module.exports = {

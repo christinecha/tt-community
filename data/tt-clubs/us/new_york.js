@@ -336,7 +336,6 @@ module.exports = [
     notes:
       "The biggest, best kept table tennis club in the Northeast USA is right here - in the little town of Pleasantville, New York. \n\nWith 19 tournament-quality tables, monthly USATT-sanctioned tournaments, this is probably our favorite club near home. Plus, $10 for a day pass for these professional conditions is an amazing deal.",
     images: [
-      "https://dl.airtable.com/.attachments/161d755560f9a86ea053c7cfee7a8e5a/56624c37/15525190313471.jpg",
       "https://dl.airtable.com/.attachments/7bf96c83b1b98aee8471147c95e20b81/7e7bb2b2/49831358_262329234700358_7782508756213377500_n1.jpg",
     ],
     lastModified: "5/30/2021 11:26pm",
@@ -352,15 +351,14 @@ module.exports = [
       [CT.LIGHTING]: 2,
       [CT.COURT_SIZE]: 2,
       [CT.BARRIERS]: 2,
-      [CT.GROUP_TRAINING]: 1,
+      [CT.GROUP_TRAINING]: 2,
       [CT.WALKINS]: 2,
       [CT.PRO_COACHES]: 2,
       [CT.COMPETITIVE_LEVEL]: 2,
       [CT.TOURNAMENTS]: 2,
       [CT.PRO_TABLES]: 2,
       [CT.WEATHER_CONTROL]: 2,
-      [CT.ACCESSIBILITY]: 1,
-      [CT.MAINTENANCE]: 1,
+      [CT.ACCESSIBILITY]: 2,
     },
   },
   {

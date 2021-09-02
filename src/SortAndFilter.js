@@ -86,7 +86,6 @@ export const SortAndFilter = ({
         width: "100%",
         alignItems: "center",
         paddingBottom: 10,
-        background: "var(--contentBgColor)",
       })}
     >
       <Wrapper label="sorted by">

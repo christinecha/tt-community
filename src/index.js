@@ -89,12 +89,18 @@ const App = () => {
       center = { lat: randomClub.lat, lng: randomClub.lng };
     }
 
-    getGeocode({ location: center }).then((results) => {
-      const match = results[0];
-      setSearchCenter(center);
-      setInitialLocation(match.formatted_address);
-      mapRef.current.setZoom(cachedZoom || 9);
-    });
+    getGeocode({ location: center })
+      .then((results) => {
+        const match = results[0];
+        setSearchCenter(center);
+        setInitialLocation(match.formatted_address);
+        mapRef.current.setZoom(cachedZoom || 9);
+      })
+      .catch(() => {
+        setSearchCenter(center);
+        setInitialLocation(`${center.lat}, ${center.lng}`);
+        mapRef.current.setZoom(cachedZoom || 9);
+      });
   }, [loaded, mapRef]);
 
   const onSearch = useCallback(
@@ -149,10 +155,14 @@ const App = () => {
 
     const centerCoords = { lat: center.lat(), lng: center.lng() };
     cacheMap(centerCoords, mapRef.current.getZoom());
-    getGeocode({ location: centerCoords }).then((results) => {
-      const match = results[0];
-      setInitialLocation(match.formatted_address);
-    });
+    getGeocode({ location: centerCoords })
+      .then((results) => {
+        const match = results[0];
+        setInitialLocation(match.formatted_address);
+      })
+      .catch(() => {
+        setInitialLocation(`${centerCoords.lat}, ${centerCoords.lng}`);
+      });
   }, []);
 
   const Title = useMemo(
@@ -170,12 +180,10 @@ const App = () => {
               Table Tennis Community 🏓 🌏
             </h1>
             <p>Where to play table tennis all over the world.</p>
-            {initialLocation && (
-              <LocationSearch
-                onChange={onSearch}
-                defaultValue={initialLocation}
-              />
-            )}
+            <LocationSearch
+              onChange={onSearch}
+              defaultValue={initialLocation}
+            />
             <br />
             {children}
             {isMobile && (
@@ -202,7 +210,7 @@ const App = () => {
     [initialLocation, onSearch, isMobile, mobileView]
   );
 
-  if (!loaded || !initialLocation) return null;
+  if (!loaded || !searchCenter) return null;
 
   return (
     <div

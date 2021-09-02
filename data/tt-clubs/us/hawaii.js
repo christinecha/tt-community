@@ -68,6 +68,7 @@ module.exports = [
     },
     locations: [
       {
+        name: "Maui Table Tennis - Lahaina",
         id: "maui-ttc-lahaina",
         address:
           "Lahaina Civic Center Gymnasium \n1840 Honoapiilani Highway, Lahaina",
@@ -76,12 +77,14 @@ module.exports = [
         visited: false,
       },
       {
+        name: "Maui Table Tennis - Makawao",
         id: "maui-ttc-makawao",
         address: "Eddie Tam Gymnasium\n931 Makawao Avenue, Makawao",
         lat: 20.850685524876113,
         lng: -156.31617270725553,
       },
       {
+        name: "Maui Table Tennis - Kahului",
         id: "maui-ttc-kahului",
         address: "Kahului Community Center (Annex)\n268 Uhu Street, Kahului",
         lat: 20.879753074618346,
@@ -89,5 +92,33 @@ module.exports = [
         visited: true,
       },
     ],
+  },
+  {
+    name: "Table Tennis & More",
+    id: "ttm-hawaii",
+    address:
+      "Kohala Civic Center, Old Court House, 54-3900 Akoni Pule Highway, Kapaau",
+    pricePerDay: "$0",
+    website: "http://www.tabletennisandmore.com/hawittc.htm",
+    facebook: "https://www.facebook.com/NKTTC/",
+    lat: 20.23015237730058,
+    lng: -155.79814541612615,
+    traits: {
+      [CT.PERMANENCE]: 0,
+      [CT.HOURS]: 1,
+      [CT.CEILINGS]: 0,
+      [CT.FLOORING]: 0,
+      [CT.LIGHTING]: 2,
+      [CT.COURT_SIZE]: 0,
+      [CT.BARRIERS]: 0,
+      [CT.GROUP_TRAINING]: 0,
+      [CT.WALKINS]: 2,
+      [CT.PRO_COACHES]: 0,
+      [CT.COMPETITIVE_LEVEL]: 0,
+      [CT.TOURNAMENTS]: 0,
+      [CT.PRO_TABLES]: 1,
+      [CT.WEATHER_CONTROL]: 2,
+      [CT.ACCESSIBILITY]: undefined,
+    },
   },
 ];
