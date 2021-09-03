@@ -96,8 +96,7 @@ module.exports = [
   {
     name: "Table Tennis & More",
     id: "ttm-hawaii",
-    address:
-      "Kohala Civic Center, Old Court House, 54-3900 Akoni Pule Highway, Kapaau",
+    address: "Kohala Civic Center\n54-3900 Akoni Pule Hwy\nKapaau, HI 96755",
     pricePerDay: "$0",
     website: "http://www.tabletennisandmore.com/hawittc.htm",
     facebook: "https://www.facebook.com/NKTTC/",
@@ -128,6 +127,7 @@ module.exports = [
     pricePerDay: "$0",
     website: "http://www.tabletennisandmore.com/waimeattc.htm",
     facebook: "https://www.facebook.com/waimeatt/",
+    phone: "808-345-8443",
     lat: 20.022782313280523,
     lng: -155.6726508468141,
     traits: {

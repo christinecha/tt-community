@@ -29,6 +29,7 @@ export const ClubList = ({ clubs, setActiveClub }) => {
           const distKm = club.distance / 1000;
           const distMi = 0.621371 * distKm;
           const num = i + 1;
+          const formattedAddress = club.address.replace(/\n/g, ", ");
 
           return (
             <li
@@ -65,8 +66,10 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                     return <ClubTrait key={id} id={id} value={value} />;
                   })}
               </div> */}
-              <p css={css({ marginTop: 5 })}>{club.address}</p>
-              <label>{distMi.toFixed(1)} miles away</label>
+              <p css={css({ marginTop: 5, opacity: 0.5, marginBottom: 2 })}>
+                {formattedAddress}
+              </p>
+              <label data-xs>{distMi.toFixed(1)} miles away</label>
             </li>
           );
         })}

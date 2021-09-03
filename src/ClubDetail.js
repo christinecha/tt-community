@@ -14,6 +14,8 @@ export const ClubDetail = ({ club, onClose }) => {
     });
   }, [club]);
 
+  const googleMapsQuery = club.address.replace(/\s+/g, "+");
+
   return (
     <>
       <div
@@ -69,16 +71,30 @@ export const ClubDetail = ({ club, onClose }) => {
           </div>
 
           <div css={css({ marginTop: 5, marginBottom: 10 })}>
-            <p>{club.address}</p>
+            <a
+              css={css({
+                display: "inline-block",
+                marginTop: 3,
+                marginBottom: 8,
+                whiteSpace: "pre-wrap",
+              })}
+              href={`https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`}
+              target="_blank"
+            >
+              {club.address}
+            </a>
+            {club.pricePerDay && (
+              <p css={css({ marginBottom: 8 })}>{club.pricePerDay} per day</p>
+            )}
             {club.website && (
               <a href={club.website} target="_blank">
-                {club.website}
+                Website
               </a>
             )}
             <br />
-            {club.facebookUrl && (
-              <a href={club.facebookUrl} target="_blank">
-                {club.facebookUrl}
+            {club.facebook && (
+              <a href={club.facebook} target="_blank">
+                Facebook Page
               </a>
             )}
 
@@ -128,10 +144,6 @@ export const ClubDetail = ({ club, onClose }) => {
               marginBottom: 10,
             })}
           >
-            <div css={css({ marginBottom: 5 })}>
-              <label>Full Details</label>
-            </div>
-
             <div css={css({ display: "flex", flexDirection: "column" })}>
               {Object.values(CLUB_TRAITS).map((id) => {
                 return (
