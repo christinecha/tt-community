@@ -5,6 +5,15 @@ import { ClubStars } from "./ClubStars";
 import { ClubTrait } from "./ClubTrait";
 import { CLUB_TRAITS } from "../data/club-traits";
 
+const LabeledField = ({ label, children }) => (
+  <div css={css({ marginBottom: 10 })}>
+    <label data-xs css={css({ opacity: 0.6 })}>
+      {label}
+    </label>
+    <div>{children}</div>
+  </div>
+);
+
 export const ClubDetail = ({ club, onClose }) => {
   const [ready, setReady] = useState(false);
 
@@ -70,81 +79,85 @@ export const ClubDetail = ({ club, onClose }) => {
             <ClubStars score={club.score} />
           </div>
 
-          <div css={css({ marginTop: 5, marginBottom: 10 })}>
-            <a
-              css={css({
-                display: "inline-block",
-                marginTop: 3,
-                marginBottom: 8,
-                whiteSpace: "pre-wrap",
-              })}
-              href={`https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`}
-              target="_blank"
-            >
-              {club.address}
-            </a>
+          <div css={css({ marginTop: 5 })}>
+            <LabeledField label="Address">
+              <a
+                css={css({
+                  display: "inline-block",
+                  whiteSpace: "pre-wrap",
+                })}
+                href={`https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`}
+                target="_blank"
+              >
+                {club.address}
+              </a>
+            </LabeledField>
             {club.pricePerDay && (
-              <p css={css({ marginBottom: 8 })}>{club.pricePerDay} per day</p>
+              <LabeledField label="Price Per Day">
+                <p>{club.pricePerDay}</p>
+              </LabeledField>
             )}
             {club.website && (
-              <a href={club.website} target="_blank">
-                Website
-              </a>
+              <LabeledField label="Website">
+                <a href={club.website} target="_blank">
+                  {club.website}
+                </a>
+              </LabeledField>
             )}
-            <br />
             {club.facebook && (
-              <a href={club.facebook} target="_blank">
-                Facebook Page
-              </a>
+              <LabeledField label="Facebook">
+                <a href={club.facebook} target="_blank">
+                  {club.facebook}
+                </a>
+              </LabeledField>
             )}
 
             {club.closed && "Closed :("}
           </div>
 
-          {/* <div css={css({ margin: -2, marginTop: 5, marginBottom: 10 })}>
-            {club.traits && (
-              <>
-                {Object.entries(club.traits).map(([id, value]) => {
-                  if (!value || value < 2) return null;
-                  return <ClubTrait key={id} id={id} value={value} />;
-                })}
-              </>
-            )}
-          </div>
-           */}
-
           {club.images && (
-            <div
-              css={css({
-                width: "100%",
-                display: "flex",
-                flexWrap: "wrap",
-              })}
-            >
-              {club.images.map((image) => (
-                <div
-                  css={css({
-                    width: "50%",
-                    paddingBottom: "50%",
-                    backgroundImage: `url(${image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  })}
-                  key={image}
-                />
-              ))}
-            </div>
+            <LabeledField label="Photos">
+              <div
+                css={css({
+                  width: "100%",
+                  display: "flex",
+                  flexWrap: "wrap",
+                })}
+              >
+                {club.images.map((image) => (
+                  <div
+                    css={css({
+                      position: "relative",
+                      flexBasis: club.images.length > 1 ? "50%" : "100%",
+                      padding: 2,
+                      boxSizing: "border-box",
+                    })}
+                    key={image}
+                  >
+                    <div
+                      css={css({
+                        paddingBottom: club.images.length > 1 ? "100%" : "50%",
+                        backgroundImage: `url(${image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      })}
+                      key={image}
+                    />
+                  </div>
+                ))}
+              </div>
+            </LabeledField>
           )}
 
           {/* <p css={css({ lineHeight: 1.6 })}>{club.notes}</p> */}
-
-          <div
-            css={css({
-              marginTop: 20,
-              marginBottom: 10,
-            })}
-          >
-            <div css={css({ display: "flex", flexDirection: "column" })}>
+          <br />
+          <LabeledField label="Details">
+            <div
+              css={css({
+                display: "flex",
+                flexDirection: "column",
+              })}
+            >
               {Object.values(CLUB_TRAITS).map((id) => {
                 return (
                   <ClubTrait
@@ -156,7 +169,7 @@ export const ClubDetail = ({ club, onClose }) => {
                 );
               })}
             </div>
-          </div>
+          </LabeledField>
 
           {/* {!club.closed && club.website && (
         <iframe width="100%" src={club.website} />

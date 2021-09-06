@@ -17,20 +17,24 @@ const rhode_island = require("./rhode_island");
 const oregon = require("./oregon");
 const arizona = require("./arizona");
 const maryland = require("./maryland");
+const arkansas = require("./arkansas");
+const tennessee = require("./tennessee");
 
 module.exports = [
   ...alaska,
   ...alabama,
   ...arizona,
+  ...arkansas,
   ...california,
-  ...hawaii,
-  ...new_york,
-  ...georgia,
-  ...massachusetts,
-  ...illinois,
   ...florida,
+  ...georgia,
+  ...hawaii,
+  ...illinois,
   ...maryland,
+  ...massachusetts,
   ...new_jersey,
+  ...new_york,
+  ...tennessee,
 
   // {
   //   name: "Malmö Arena Sports Complex",

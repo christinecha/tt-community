@@ -20,11 +20,8 @@ module.exports = [
   {
     name: "Sihlsports AG",
     id: "sihlsports-ag",
-    location: "Zurich",
-    type: "Gymnasium",
-    tags: "Table Reservations,Good for Training",
     pricePerDay: "$13",
-    address: "",
+    address: "Sihltalstrasse 63, 8135 Langnau am Albis, Switzerland",
     website: "https://www.sihlsports.ch/",
     notes:
       "You know you're addicted to table tennis when you travel 1-hour each way (from Zurich airport) to play during a layover... at 7 in the morning. \n\nThis place is not a table tennis club alone, but a multi-sports complex. If you book a table, you'll be placed in a squash room, which is actually perfect because you spend less time chasing the ball.\n\nNice space, super clean. We walked from the train station with our baggage which was a tiny bit scary (not a good pedestrian area) but it wasn't far.\n\nEverything is quite expensive in Switzerland, so at 25 Swiss Francs for an hour of play (per table, so ~$13 USD per person), we've got a pretty good deal.",
@@ -52,7 +49,6 @@ module.exports = [
       [CT.PRO_TABLES]: 1,
       [CT.WEATHER_CONTROL]: 2,
       [CT.ACCESSIBILITY]: undefined,
-      [CT.MAINTENANCE]: 2,
     },
   },
 ];

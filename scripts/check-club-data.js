@@ -1,6 +1,9 @@
 const { CLUB_TRAITS } = require("../data/club-traits");
 const clubs = require("../data/tt-clubs");
 
+const args = process.argv;
+const isStrict = args.includes("--strict");
+
 const incomplete = [];
 const traitsMissing = [];
 
@@ -15,12 +18,18 @@ clubs.forEach((club, i) => {
   const missingProps = REQUIRED_PROPS.filter(
     (prop) => typeof club[prop] === "undefined"
   );
+
+  let duplicateProp;
   const duplicate = otherClubs.find((other) => {
-    return REQUIRED_PROPS.find((prop) => other[prop] === club[prop]);
+    const prop = REQUIRED_PROPS.find((prop) => other[prop] === club[prop]);
+    duplicateProp = prop;
+    return !!prop;
   });
 
   if (duplicate) {
-    console.log(`[${ID}] Duplicate props found: ${duplicate.name}`);
+    console.log(
+      `[${ID}] Duplicate prop "${duplicateProp}" found: ${duplicate.name}`
+    );
   }
 
   if (missingProps.length) {
@@ -28,9 +37,10 @@ clubs.forEach((club, i) => {
     incomplete.push(club);
   }
 
-  const missingTraits = Object.values(CLUB_TRAITS).filter(
-    (trait) => typeof (club.traits || {})[trait] === "undefined"
-  );
+  const missingTraits = Object.values(CLUB_TRAITS).filter((trait) => {
+    if (isStrict) return typeof (club.traits || {})[trait] === "undefined";
+    return !(club.traits || {}).hasOwnProperty(trait);
+  });
 
   if (!club.traits || missingTraits.length) {
     console.log(`[${ID}] Missing ${missingTraits.length} trait(s).`);

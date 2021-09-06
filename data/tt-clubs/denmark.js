@@ -19,6 +19,7 @@ module.exports = [
     traits: {
       [CT.PERMANENCE]: 0,
       [CT.HOURS]: 0,
+      [CT.CLUB_SIZE]: 0,
       [CT.CEILINGS]: 2,
       [CT.FLOORING]: 0,
       [CT.LIGHTING]: 1,
@@ -32,7 +33,6 @@ module.exports = [
       [CT.PRO_TABLES]: 0,
       [CT.WEATHER_CONTROL]: 2,
       [CT.ACCESSIBILITY]: undefined,
-      [CT.MAINTENANCE]: undefined,
     },
   },
   {
