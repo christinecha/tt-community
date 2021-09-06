@@ -10,7 +10,7 @@ const CLUB_TRAITS = {
   GROUP_TRAINING: "group-training",
   WALKINS: "WALKINS",
   PRO_COACHES: "pro-coaches",
-  COMPETITIVE_LEVEL: "competitive-level",
+  // COMPETITIVE_LEVEL: "competitive-level",
   TOURNAMENTS: "usatt-tournaments",
   PRO_TABLES: "pro-tables",
   WEATHER_CONTROL: "weather-control",
@@ -96,9 +96,9 @@ const TRAIT_DATA = {
     color: "yellow",
     name: "Regular Group Training",
     options: {
-      0: "There are no group training opportunities available.",
-      1: "There are sometimes group training opportunities available, but they are irregular or infrequent.",
-      2: "There are regular group training opportunities available, at least once a week.",
+      0: "There are no regular group training programs available.",
+      1: "There are some regular group training programs available.",
+      2: "There are regular group training programs all year round for all levels & demographics.",
     },
   },
   [CT.WALKINS]: {
@@ -119,15 +119,15 @@ const TRAIT_DATA = {
       2: "There are professional coaches up to a national or international level.",
     },
   },
-  [CT.COMPETITIVE_LEVEL]: {
-    color: "yellow",
-    name: "Competitive Level",
-    options: {
-      0: "There are no or very few advanced competitive players who play here regularly.",
-      1: "There are advanced competitive players who play here regularly.",
-      2: "On most days, there are many advanced competitive players at this club.",
-    },
-  },
+  // [CT.COMPETITIVE_LEVEL]: {
+  //   color: "yellow",
+  //   name: "Competitive Level",
+  //   options: {
+  //     0: "There are no or very few advanced competitive players who play here regularly.",
+  //     1: "There are advanced competitive players who play here regularly.",
+  //     2: "On most days, there are many advanced competitive players at this club.",
+  //   },
+  // },
   [CT.TOURNAMENTS]: {
     color: "yellow",
     name: "Tournaments & Leagues",
