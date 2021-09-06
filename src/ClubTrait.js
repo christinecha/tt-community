@@ -4,9 +4,9 @@ import { css, jsx } from "@emotion/react";
 import { TRAIT_DATA } from "../data/club-traits";
 
 const ICONS = {
-  0: "🚫",
-  1: "🔆",
-  2: "✅",
+  0: "",
+  1: "👍",
+  2: "👍👍",
   undefined: "🔎",
 };
 
