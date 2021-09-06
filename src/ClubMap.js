@@ -116,7 +116,7 @@ export const ClubMap = ({
             >
               {club.name}
             </p>
-            <div style={{ margin: -2 }}>
+            <div>
               <ClubStars score={club.score} />
             </div>
             <a href={`#${club.id}`} style={{ color: "var(--contentColor)" }}>

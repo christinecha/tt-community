@@ -19,6 +19,7 @@ const arizona = require("./arizona");
 const maryland = require("./maryland");
 const arkansas = require("./arkansas");
 const tennessee = require("./tennessee");
+const missouri = require("./missouri");
 
 module.exports = [
   ...alaska,
@@ -32,6 +33,7 @@ module.exports = [
   ...illinois,
   ...maryland,
   ...massachusetts,
+  ...missouri,
   ...new_jersey,
   ...new_york,
   ...tennessee,
