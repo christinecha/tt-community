@@ -51,9 +51,9 @@ const TRAIT_DATA = {
     color: "yellow",
     name: "Ceiling Height",
     options: {
-      0: "The low ceilings do not allow for high balls.",
-      1: "The ceilings are high enough for most competitive players.",
-      2: "The ceilings are high enough for professional matches",
+      0: "The ceilings are not high enough for serious competitive play (lower than 3 meters).",
+      1: "The ceilings are high enough for amateur competitive play (3+ meters high).",
+      2: "The ceilings are high enough for professional matches (5+ meters high).",
     },
   },
   [CT.FLOORING]: {
@@ -160,7 +160,7 @@ const TRAIT_DATA = {
     name: "Wheelchair Accessibility",
     options: {
       0: "This club is not wheelchair-accessible.",
-      1: "Club entry is wheelchair-accessible but there are some primary areas (courts, restrooms, etc.) that are not.",
+      1: "This club is mostly wheelchair-accessible but there are primary areas (some courts, walkways, etc.) that are not.",
       2: "This club is fully wheelchair-accessible.",
     },
   },
