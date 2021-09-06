@@ -4,9 +4,11 @@ const ecuador = require("./ecuador");
 const estonia = require("./estonia");
 const germany = require("./germany");
 const hong_kong = require("./hong-kong");
+const morocco = require("./morocco");
 const south_korea = require("./south-korea");
 const spain = require("./spain");
 const switzerland = require("./switzerland");
+const togo = require("./togo");
 const us = require("./us");
 const vietnam = require("./vietnam");
 
@@ -30,6 +32,8 @@ const clubs = [
   ...spain.map((c) => ({ ...c, country: "Spain" })),
   ...switzerland.map((c) => ({ ...c, country: "Switzerland" })),
   ...estonia.map((c) => ({ ...c, country: "Estonia" })),
+  ...morocco.map((c) => ({ ...c, country: "Morocco" })),
+  ...togo.map((c) => ({ ...c, country: "Togo" })),
 ];
 
 const expandedClubs = [];

@@ -27,7 +27,7 @@ const TRAIT_DATA = {
     options: {
       0: "Multipurpose space.",
       1: "A section of the facility is always dedicated to table tennis.",
-      2: "The entire facility is always dedicated to table tennis.",
+      2: "The majority of this facility is always dedicated to table tennis.",
     },
   },
   [CT.HOURS]: {
