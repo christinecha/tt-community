@@ -22,6 +22,7 @@ import { ClubMap } from "./ClubMap";
 import { useMobile, MobileProvider } from "./util";
 import { FILTER_RATING, SORT, SortAndFilter } from "./SortAndFilter";
 import { withRouter } from "react-router";
+import { Helmet } from "react-helmet";
 
 const ttClubs = rawClubs
   .filter((club) => !Number.isNaN(club.lat) && !Number.isNaN(club.lng))
@@ -232,6 +233,15 @@ export const App = withRouter(({ history, match }) => {
         margin: "auto",
       })}
     >
+      {activeClub && (
+        <Helmet>
+          <title>{activeClub.name} 🏓 🌏</title>
+          <meta
+            name="description"
+            content={`${activeClub.name} - a place to play table tennis (aka ping pong).`}
+          />
+        </Helmet>
+      )}
       <div css={css({ display: "flex", height: "100%", overflow: "hidden" })}>
         {(!isMobile || mobileView === MOBILE_VIEW.LIST) && (
           <div
