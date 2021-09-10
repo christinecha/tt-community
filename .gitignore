@@ -2,6 +2,5 @@
 /public/scripts
 **/dist/
 **/*.DS_Store
-./public/
 
 /home-values-zillow.csv
