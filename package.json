@@ -23,6 +23,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "axios": "^0.21.4",
     "babel-loader": "^8.2.2",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
@@ -30,6 +31,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack",
+    "form-to-clubs": "node ./scripts/form-to-clubs.js",
     "generate:map-data": "node ./scripts/generate-map-data.js",
     "dev": "NODE_ENV=development webpack serve",
     "check-clubs": "node ./scripts/check-club-data"
