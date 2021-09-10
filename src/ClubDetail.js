@@ -111,6 +111,20 @@ export const ClubDetail = ({ club, onClose }) => {
                 </a>
               </LabeledField>
             )}
+            {club.email && (
+              <LabeledField label="Email">
+                <a href={`mailto:${club.email}`} target="_blank">
+                  {club.email}
+                </a>
+              </LabeledField>
+            )}
+            {club.phone && (
+              <LabeledField label="Phone">
+                <a href={`tel:${club.phone}`} target="_blank">
+                  {club.phone}
+                </a>
+              </LabeledField>
+            )}
 
             {club.closed && "Closed :("}
           </div>

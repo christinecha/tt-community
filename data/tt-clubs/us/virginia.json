@@ -3,10 +3,10 @@
     "name": "The West Salem Tennis Club",
     "id": "west-salem-ttc",
     "address": " 2645 W. Main St. Salem, VA",
-    "phone": "+15408645879",
     "visited": false,
     "notes": "The West Salem Tennis Club plays year round from 5:30 p.m. to midnight every Thursday at 2645 W. Main St. in Salem. All are welcome. For information, call Billy Marshall at (540) 389-3201.",
     "website": "",
+    "phone": "540-864-5879",
     "email": "billymarshall@hotpop.com",
     "lat": 37.28265571896715,
     "lng": -80.10561594442984
