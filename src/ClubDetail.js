@@ -94,7 +94,17 @@ export const ClubDetail = ({ club, onClose }) => {
             </LabeledField>
             {club.pricePerDay && (
               <LabeledField label="Price Per Day">
-                <p>{club.pricePerDay}</p>
+                <p>
+                  {club.pricePerDay} {club.priceBy ? `per ${club.priceBy}` : ""}
+                </p>
+              </LabeledField>
+            )}
+            {club.pricePerHour && (
+              <LabeledField label="Price Per Hour">
+                <p>
+                  {club.pricePerHour}{" "}
+                  {club.priceBy ? `per ${club.priceBy}` : ""}
+                </p>
               </LabeledField>
             )}
             {club.website && (
