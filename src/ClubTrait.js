@@ -24,12 +24,13 @@ export const ClubTrait = ({ id, value, full = false }) => {
         background: "#fff6e1",
         paddingLeft: 5,
         paddingRight: 5,
-        paddingTop: 2,
+        paddingTop: 4,
         paddingBottom: 2,
         boxSizing: "border-box",
         fontSize: "0.9rem",
         display: "inline-block",
-        margin: 2,
+        marginBottom: 2,
+        marginTop: 2,
       })}
     >
       {data.name || id} {icon}
