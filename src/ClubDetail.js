@@ -4,6 +4,7 @@ import { css, jsx } from "@emotion/react";
 import { ClubStars } from "./ClubStars";
 import { ClubTrait } from "./ClubTrait";
 import { CLUB_TRAITS } from "../data/club-traits";
+import { Link } from "react-router-dom";
 
 const LabeledField = ({ label, children }) => (
   <div css={css({ marginBottom: 10 })}>
@@ -61,18 +62,17 @@ export const ClubDetail = ({ club, onClose }) => {
             boxSizing: "border-box",
           })}
         >
-          <a
+          <Link
             css={css({
               cursor: "pointer",
               padding: 10,
               margin: -10,
               textDecoration: "none",
             })}
-            href={"#"}
-            onClick={onClose}
+            to={"/"}
           >
             ✕
-          </a>
+          </Link>
           <h1>{club.name}</h1>
           {/* {club.visited && <label>✅ Visited</label>} */}
           <div>

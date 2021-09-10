@@ -14,6 +14,7 @@ import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubStars } from "./ClubStars";
 import debounce from "lodash.debounce";
+import { FakeLink } from "./util";
 
 const PINS = {
   DEFAULT: "./pinpong.svg",
@@ -117,9 +118,12 @@ export const ClubMap = ({
             <div>
               <ClubStars score={club.score} />
             </div>
-            <a href={`#${club.id}`} style={{ color: "var(--contentColor)" }}>
+            <FakeLink
+              to={`/${club.id}`}
+              style={{ color: "var(--contentColor)" }}
+            >
               More Details
-            </a>
+            </FakeLink>
           </div>
         ),
         pixelOffset: new google.maps.Size(0, -2),

@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ClubStars } from "./ClubStars";
 import { ClubTrait } from "./ClubTrait";
 
-export const ClubList = ({ clubs, setActiveClub }) => {
+export const ClubList = ({ clubs }) => {
   return (
     <div
       css={css({
@@ -38,7 +39,7 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                 marginBottom: 15,
               })}
             >
-              <a css={css({ textDecoration: "none" })} href={`#${club.id}`}>
+              <Link css={css({ textDecoration: "none" })} to={`/${club.id}`}>
                 <h3
                   css={css({
                     display: "inline",
@@ -51,13 +52,12 @@ export const ClubList = ({ clubs, setActiveClub }) => {
                       },
                     },
                   })}
-                  onClick={() => setActiveClub(club)}
                 >
                   {num}. {club.name}
                   {"\u00A0"}
                   <ClubStars score={club.score} />
                 </h3>
-              </a>
+              </Link>
               {/* <div css={css({ margin: -2, marginTop: 5 })}>
                 {Object.entries(club.traits)
                   .filter(([_, value]) => value === 2)

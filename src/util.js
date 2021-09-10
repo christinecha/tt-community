@@ -30,3 +30,11 @@ export const MobileProvider = ({ children }) => {
 
   return <Mobile.Provider value={isMobile}>{children}</Mobile.Provider>;
 };
+
+export const FakeLink = ({ to, children, ...rest }) => {
+  return (
+    <a href={to} data-fake-link={true} {...rest}>
+      {children}
+    </a>
+  );
+};
