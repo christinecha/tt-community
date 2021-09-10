@@ -85,9 +85,7 @@
         "address": "Alaska Electric Light & Power, 5601 Tonsgard Ct, Juneau, AK 99801",
         "lat": 58.35519619476276,
         "lng": -134.496315022738,
-        "images": [
-          "http://akttc.squarespace.com/picture/img_0969.jpg?pictureId=12099523"
-        ],
+        "images": ["http://akttc.squarespace.com/storage/IMG_8544.jpg"],
         "traits": {
           "_permanence": 0,
           "_hours": 0,
