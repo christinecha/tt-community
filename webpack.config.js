@@ -37,6 +37,7 @@ const development = {
     port: 8000,
     contentBase: PUBLIC_DIR,
     historyApiFallback: true,
+    disableHostCheck: true,
   },
   devtool: "inline-source-map",
 };

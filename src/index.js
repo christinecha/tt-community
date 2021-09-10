@@ -1,5 +1,4 @@
 /** @jsx jsx */
-
 import React, {
   useCallback,
   useEffect,
@@ -58,7 +57,7 @@ const App = () => {
   const [mobileView, setMobileView] = useState(MOBILE_VIEW.MAP);
   const isMobile = useMobile();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const loader = new Loader({
       apiKey: "AIzaSyA-Tg-VBzTQ0sgZtJpNv43IltvDH0f7zPQ",
       version: "weekly",
