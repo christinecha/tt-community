@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Borussia Düsseldorf",
+    "id": "borussia-dusseldorf",
+    "location": "Dusseldorf",
+    "type": "Training Center,Professional Arena,Tournament Venue",
+    "tags": "Good for Training,Coaching Available,Training Camp",
+    "pricePerDay": "$300",
+    "pricePerHour": "€15",
+    "address": "Borussia-Düsseldorf-Str. 1 (bisher, Ernst-Poensgen-Allee 58, 40629 Düsseldorf, Germany",
+    "website": "https://www.borussia-duesseldorf.com",
+    "notes": "If you love table tennis, you might have heard of legendary German player Timo Boll. And if you love Timo Boll, you might want to check this place out.\n\nBorussa Düsseldorf is the training center for some of the best international players. It's not one portion of a large sports venue - it IS the sports venue. Beautiful halls, world class equipment, cross-training gyms, sports hotel - this is as good as it gets.\n\nThe good news is, you don't have to be Timo to play here. Through a program called Andro TT Schule, you can drop in for a short, intensive training for amateur players. We enrolled in the 4-day schedule, which costs about $300 USD per person. There was about 5 hours of training each day, ranging from match drills to footwork exercises to video analysis.\n\nThe group had a big range of levels, from beginner to advanced, with most people landing around the 1600-1700 USATT level (from what we could tell). In our session, there were only a few players that looked more advanced (2000 - 2200 USATT), and no one above that.\n\nThe attached Sports Hotel was super clean. No frills, but had everything you needed, including this lovely photo of young Jörg Roßkopf and Vladimir Samsonov looking down on you to keep you motivated.\n\nHighly recommend, and will definitely be back.",
+    "images": [
+      "https://dl.airtable.com/.attachments/fda22a3e02cc774403461c930089a528/f00ad86f/1552687660991.jpg",
+      "https://dl.airtable.com/.attachments/45a97d9348a06f5c9cc41ace6502efc9/77645deb/1552687616076.jpg",
+      "https://dl.airtable.com/.attachments/248d4438a36aed3f3a6027d0bf2b3676/48b3d90d/1552687564506.jpg"
+    ],
+    "lastModified": "5/30/2021 11:26pm",
+    "visited": true,
+    "lat": 51.244195294708554,
+    "lng": 6.828220885281571,
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 1,
+      "_pro_coaches": 2,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": 2,
+      "_accessibility": 2
+    }
+  },
+  {
+    "name": "Dr. Pong",
+    "id": "dr-pong",
+    "location": "Berlin",
+    "type": "Bar",
+    "tags": "Casual Play",
+    "pricePerDay": "",
+    "address": "Eberswalder Str. 21, 10437 Berlin, Germany",
+    "website": "https://www.drpong.net/",
+    "notes": "[Unfortunately, this location is now closed.]\n\nIf you want to play ping pong while simultaneously chainsmoking and having a beer in a dark room, this is the perfect spot. There's exactly one table, and it's all Around The World style play. You won't be the only person to bring your own racket, but most people will be grabbing a pretty gnarly looking one from the bar.\n\nGood atmosphere, well-priced drinks, and very Berlin.",
+    "images": [
+      "https://dl.airtable.com/.attachments/bf755df833a1a130330cf92bb24a0f99/0663edb3/1548823936206.jpg"
+    ],
+    "lastModified": "5/30/2021 11:26pm",
+    "lat": 52.54112768551571,
+    "lng": 13.410722998467088,
+    "closed": true,
+    "visited": true
+  },
+
+  {
+    "name": "Schmittz",
+    "id": "schmittz-berlin",
+    "location": "Berlin",
+    "type": "Bar",
+    "tags": "Casual Play",
+    "pricePerDay": "",
+    "address": "Gormannstraße 19, 10119 Berlin, Germany",
+    "website": "",
+    "notes": "",
+    "attachments": "",
+    "lastModified": "6/27/2019 7:50pm",
+    "quality": 1,
+    "visited": true,
+    "lat": 52.52941079949402,
+    "lng": 13.405275013811654
+  }
+]

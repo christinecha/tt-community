@@ -25,15 +25,25 @@
     "@babel/preset-react": "^7.13.13",
     "axios": "^0.21.4",
     "babel-loader": "^8.2.2",
+    "glob": "^7.1.7",
+    "nodemon": "^2.0.12",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "build": "yarn run compile-clubs && NODE_ENV=production webpack",
     "form-to-clubs": "node ./scripts/form-to-clubs.js",
     "generate:map-data": "node ./scripts/generate-map-data.js",
-    "dev": "NODE_ENV=development webpack serve",
-    "check-clubs": "node ./scripts/check-club-data"
+    "dev": "yarn run compile-clubs:dev & NODE_ENV=development webpack serve",
+    "check-clubs": "yarn run compile-clubs && node ./scripts/check-club-data",
+    "compile-clubs": "node ./scripts/compile-clubs",
+    "compile-clubs:dev": "nodemon ./scripts/compile-clubs"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "data/tt-clubs/dist/**"
+    ],
+    "delay": 2500
   }
 }

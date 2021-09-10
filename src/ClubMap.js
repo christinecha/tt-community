@@ -10,8 +10,6 @@ import { getGeocode, getLatLng } from "use-places-autocomplete";
 import ReactDOM from "react-dom";
 import { css, jsx } from "@emotion/react";
 
-import ttClubs from "../data/tt-clubs/us";
-
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubStars } from "./ClubStars";

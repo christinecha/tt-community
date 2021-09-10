@@ -1,5 +1,5 @@
 const { CLUB_TRAITS } = require("../data/club-traits");
-const clubs = require("../data/tt-clubs");
+const clubs = require("../data/tt-clubs/dist/all-clubs.json");
 
 const args = process.argv;
 const isStrict = args.includes("--strict");
@@ -15,9 +15,7 @@ clubs.forEach((club, i) => {
   const ID = `${club.country}: ${club.name}`;
   const otherClubs = [...clubs];
   otherClubs.splice(i, 1);
-  const missingProps = REQUIRED_PROPS.filter(
-    (prop) => typeof club[prop] === "undefined"
-  );
+  const missingProps = REQUIRED_PROPS.filter((prop) => club[prop] === null);
 
   let duplicateProp;
   const duplicate = otherClubs.find((other) => {
@@ -38,7 +36,7 @@ clubs.forEach((club, i) => {
   }
 
   const missingTraits = Object.values(CLUB_TRAITS).filter((trait) => {
-    if (isStrict) return typeof (club.traits || {})[trait] === "undefined";
+    if (isStrict) return (club.traits || {})[trait] === null;
     return !(club.traits || {}).hasOwnProperty(trait);
   });
 

@@ -20,8 +20,8 @@ export const SORT = {
     id: "rating",
     name: "Rating",
     fn: (a, b) => {
-      if (b.score === undefined) return -1;
-      if (a.score === undefined) return 1;
+      if (b.score === null) return -1;
+      if (a.score === null) return 1;
       return b.score - a.score;
     },
   },

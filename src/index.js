@@ -16,7 +16,7 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 import { css, jsx } from "@emotion/react";
 
-import rawClubs from "../data/tt-clubs";
+import rawClubs from "../data/tt-clubs/dist/all-clubs.json";
 
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";

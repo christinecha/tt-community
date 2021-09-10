@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Phoenix Table Tennis Club",
+    "id": "phoenix-ttc",
+    "address": "Arizona Recreation Center for the Handicapped, 1550 W. Colter Street, Phoenix, AZ 85015",
+    "website": "http://www.phoenixtabletennisclub.org/",
+    "visited": false,
+    "lat": 33.51481904745695,
+    "lng": -112.09281146002157,
+    "traits": {
+      "_permanence": 0,
+      "_hours": 1,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 0,
+      "_lighting": null,
+      "_court_size": null,
+      "_barriers": null,
+      "_group_training": 0,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 1,
+      "_tournaments": 2,
+      "_table_quality": null,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "Table Tennis & More",
+    "id": "ttm-phoenix",
+    "address": "4114 N 10th Pl., Phoenix, AZ 85014",
+    "website": "https://tabletennisandmore.com/phx/tabletennisandmore/",
+    "visited": false,
+    "lat": 33.49552686399264,
+    "lng": -112.0599025581732,
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 0,
+      "_ceiling_height": 0,
+      "_flooring": 2,
+      "_lighting": 1,
+      "_court_size": 0,
+      "_barriers": 1,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 1,
+      "_tournaments": 1,
+      "_table_quality": 2,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "Chandler Table Tennis",
+    "website": "http://chandlertabletennisclub.org/",
+    "locations": [
+      {
+        "name": "Chandler Table Tennis (Chandler Community Center)",
+        "id": "chandler-tt-commonwealth",
+        "address": "Chandler Community Center\n125 East Commonwealth Avenue\nChandler AZ 85225",
+        "lat": 33.30344645180998,
+        "lng": -111.83952337536928,
+        "images": [
+          "http://chandlertabletennisclub.org/photos/gallery001/Panno%20Dok-Sruti%20Raman.jpg"
+        ],
+        "traits": {
+          "_permanence": 0,
+          "_hours": 1,
+          "_club_size": 1,
+          "_ceiling_height": 2,
+          "_flooring": 0,
+          "_lighting": 2,
+          "_court_size": 1,
+          "_barriers": 0,
+          "_group_training": 0,
+          "_walkin_friendly": 2,
+          "_pro_coaches": 1,
+          "_tournaments": 1,
+          "_table_quality": 1,
+          "_climate_control": 2,
+          "_accessibility": 2
+        }
+      },
+      {
+        "name": "Chandler Table Tennis (Tumbleweed Recreation Center)",
+        "id": "chandler-tt-tumbleweed",
+        "address": "Tumbleweed Recreation Center\n745 E. Germann Road\nChandler, AZ 85286",
+        "lat": 33.27593955048767,
+        "lng": -111.8290946428365,
+        "images": [
+          "http://chandlertabletennisclub.org/photos/gallery003/IMG_20190629_164400.jpg",
+          "http://chandlertabletennisclub.org/photos/gallery003/IMG_20190629_164954.jpg"
+        ],
+        "traits": {
+          "_permanence": 0,
+          "_hours": 1,
+          "_club_size": 1,
+          "_ceiling_height": 2,
+          "_flooring": 0,
+          "_lighting": 2,
+          "_court_size": 1,
+          "_barriers": 0,
+          "_group_training": 0,
+          "_walkin_friendly": 2,
+          "_pro_coaches": 1,
+          "_tournaments": 1,
+          "_table_quality": 1,
+          "_climate_control": 2,
+          "_accessibility": 2
+        }
+      }
+    ]
+  }
+]

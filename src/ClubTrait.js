@@ -7,7 +7,7 @@ const ICONS = {
   0: "",
   1: "👍",
   2: "👍👍",
-  undefined: "🔎",
+  null: "🔎",
 };
 
 export const ClubTrait = ({ id, value, full = false }) => {

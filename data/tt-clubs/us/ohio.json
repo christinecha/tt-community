@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Samson Dubina Table Tennis Academy",
+    "id": "samson-dubina",
+    "type": "Training Center",
+    "address": "2262 S Arlington Rd, Akron, OH 44319",
+    "phone": "+13309499230",
+    "visited": false,
+    "website": "https://samsondubina.com/",
+    "lat": 41.01108833362306,
+    "lng": -81.49204438517026,
+    "images": ["https://i.ytimg.com/vi/bjAU4RdfC6c/maxresdefault.jpg"],
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 2,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": 2,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "Columbus Table Tennis Club",
+    "id": "columbus-ttc",
+    "type": "Training Center",
+    "address": "653 E 8th Ave, Columbus, OH 43201",
+    "phone": "+16149738584",
+    "visited": false,
+    "website": "https://www.columbustabletennisclub.org/",
+    "lat": 40.01143654354449,
+    "lng": -82.9926199165601,
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": null,
+      "_walkin_friendly": 2,
+      "_pro_coaches": null,
+      "_tournaments": 1,
+      "_table_quality": 2,
+      "_climate_control": 2,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "Spin & Smash Table Tennis & Ping Pong Center",
+    "id": "spin-smash-columbus",
+    "type": "Training Center",
+    "address": "2192 N Wilson Rd, Columbus, OH 43228",
+    "phone": "+16148698219",
+    "visited": false,
+    "website": "https://spinandsmash.com/",
+    "lat": 40.01653067366695,
+    "lng": -83.1176639272065
+  }
+]

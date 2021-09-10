@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Chattanooga Table Tennis Club",
+    "id": "chattanooga-ttc",
+    "address": "Wyatt YFD Center\n406 Colville St\nChattanooga, TN 37405",
+    "phone": "(423) 757-5443",
+    "email": "parakhneville@gmail.com",
+    "visited": false,
+    "facebook": "https://www.facebook.com/ChattanoogaTableTennisClub",
+    "lat": 35.07026678009436,
+    "lng": -85.30310723252106,
+    "traits": {
+      "_permanence": 0,
+      "_hours": 0,
+      "_club_size": null,
+      "_ceiling_height": null,
+      "_flooring": null,
+      "_lighting": null,
+      "_court_size": null,
+      "_barriers": null,
+      "_group_training": null,
+      "_walkin_friendly": null,
+      "_pro_coaches": null,
+      "_tournaments": null,
+      "_table_quality": null,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  }
+]

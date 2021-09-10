@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Cape Fear Table Tennis Club",
+    "id": "cape-fear-ttc",
+    "address": "1612 Camden Rd, Fayetteville, NC 28306",
+    "phone": "",
+    "visited": false,
+    "website": "http://www.capefearttc.net/",
+    "lat": 35.0974651243014,
+    "lng": -78.86965429319957
+  },
+  {
+    "name": "Charlotte Table Tennis Club",
+    "id": "charlotte-ttc",
+    "address": "First United Methodist Church Gym, 501 N. Tryon St., Charlotte, NC 28202",
+    "phone": "+17045602441",
+    "visited": false,
+    "website": "https://ttcharlotte.org/",
+    "lat": 35.231287136807026,
+    "lng": -80.83903443862008
+  },
+  {
+    "name": "Triangle Badminton and Table Tennis",
+    "id": "trangle-btt",
+    "type": "Training Center,Tournament Venue",
+    "address": "2900 Perimeter Park Dr #200, Morrisville, NC 27560",
+    "website": "https://trianglebtt.com/",
+    "quality": 7,
+    "lat": 35.84582772501067,
+    "lng": -78.83347414438383,
+    "visited": true,
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 2,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": 2,
+      "_accessibility": 2
+    }
+  }
+]

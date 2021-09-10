@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Absalon",
+    "id": "absalon-cph",
+    "location": "Copenhagen",
+    "type": "Cafe",
+    "tags": "Casual Play",
+    "pricePerDay": "",
+    "address": "Sønder Blvd. 73, 1720 København, Denmark",
+    "website": "https://absaloncph.dk",
+    "notes": "",
+    "attachments": "",
+    "lastModified": "6/27/2019 7:48pm",
+    "visited": true,
+    "lat": 55.66549495301967,
+    "lng": 12.550207525563831,
+    "traits": {
+      "_permanence": 0,
+      "_hours": 0,
+      "_club_size": 0,
+      "_ceiling_height": 2,
+      "_flooring": 0,
+      "_lighting": 1,
+      "_court_size": 0,
+      "_barriers": 0,
+      "_group_training": 0,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 0,
+      "_tournaments": 0,
+      "_table_quality": 0,
+      "_climate_control": 2,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "DGI Byen",
+    "id": "dgi-byen-cph",
+    "location": "Copenhagen",
+    "type": "Gymnasium",
+    "tags": "Table Reservations",
+    "pricePerDay": "DKK 65",
+    "address": "Tietgensgade 65 1704 København V",
+    "website": "https://www.dgibyen.dk/en/water-sport/sports/ping-pong/",
+    "notes": "",
+    "attachments": "",
+    "lastModified": "6/27/2019 7:50pm",
+    "lat": 55.669645142111015,
+    "lng": 12.564646827417688,
+    "visited": true
+  }
+]

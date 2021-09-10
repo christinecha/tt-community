@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Arkansas Table Tennis Academy",
+    "id": "arktta",
+    "address": "15716 MacArthur Dr.\nNorth Little Rock, AR 72118",
+    "website": "https://arktta.org/",
+    "facebook": "https://www.facebook.com/arktta.org",
+    "phone": "501-291-3142",
+    "pricePerDay": "$10",
+    "visited": false,
+    "lat": 34.88146988543464,
+    "lng": -92.3486049538878,
+    "images": [
+      "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/59629387_323526114971858_4415928470001942528_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=e3f864&_nc_ohc=Jl7A_dOziNYAX8ZU6uy&_nc_ht=scontent-lga3-1.xx&oh=9fbabee82e5ffa233f4d1a87f1fae553&oe=615A59F2",
+      "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/50860289_285329625458174_6465309146496368640_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=EOynHwLHs_8AX8s8KJO&tn=5nTYqG6I1uFc3dsw&_nc_ht=scontent-lga3-1.xx&oh=a58d8001013d0d0fb1fc8f3fa32f0cd4&oe=615D9E69"
+    ],
+    "traits": {
+      "_permanence": 2,
+      "_hours": 1,
+      "_club_size": 0,
+      "_ceiling_height": 1,
+      "_flooring": 0,
+      "_lighting": 2,
+      "_court_size": 1,
+      "_barriers": 1,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 1,
+      "_tournaments": 1,
+      "_table_quality": 1,
+      "_climate_control": 2,
+      "_accessibility": null
+    }
+  },
+  {
+    "name": "Little Rock Table Tennis Club",
+    "id": "lrttc",
+    "address": "300 S. Monroe St. Little Rock, AR 72204",
+    "website": "https://www.lrttc.org/",
+    "facebook": "https://www.facebook.com/groups/lrttc/",
+    "phone": "501-291-3142",
+    "email": "littlerocktabletennis@gmail.com",
+    "pricePerDay": "$5",
+    "visited": false,
+    "lat": 34.74816273742919,
+    "lng": -92.32873926423758,
+    "traits": {
+      "_permanence": 0,
+      "_hours": 2,
+      "_club_size": null,
+      "_ceiling_height": null,
+      "_flooring": null,
+      "_lighting": null,
+      "_court_size": null,
+      "_barriers": null,
+      "_group_training": null,
+      "_walkin_friendly": 2,
+      "_pro_coaches": null,
+      "_tournaments": 1,
+      "_table_quality": null,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  }
+]

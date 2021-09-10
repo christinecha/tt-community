@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Kansas City Table Tennis",
+    "id": "kansas-city-tt",
+    "address": "Saint Catherine of Sienna Parish\n4101 E. 105th Terrace\nKansas City, MO 64137",
+    "phone": "(816)-769-3279",
+    "visited": false,
+    "website": "https://www.kansascitytabletennis.com/",
+    "lat": 38.934245265878076,
+    "lng": -94.54264568685733,
+    "pricePerDay": "$7",
+    "images": [
+      "https://www.kansascitytabletennis.com/wp-content/uploads/2021/06/saint-catherine-gym2.jpg"
+    ],
+    "traits": {
+      "_permanence": 0,
+      "_hours": 1,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 0,
+      "_lighting": 2,
+      "_court_size": 1,
+      "_barriers": 1,
+      "_group_training": 0,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 1,
+      "_tournaments": null,
+      "_table_quality": 1,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  }
+]

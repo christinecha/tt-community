@@ -21,21 +21,21 @@ const SIMPLE_ALIAS = {
 };
 
 const TRAIT_ALIAS = {
-  [CT.PERMANENCE]: "Permanance",
-  [CT.HOURS]: "Hours",
-  [CT.CLUB_SIZE]: "Club Size",
-  [CT.CEILINGS]: "Ceiling Height",
-  [CT.FLOORING]: "Flooring",
-  [CT.LIGHTING]: "Lighting",
-  [CT.COURT_SIZE]: "Court Size",
-  [CT.BARRIERS]: "Court Barriers",
-  [CT.GROUP_TRAINING]: "Group Training",
-  [CT.WALKINS]: "Walk-In Friendly",
-  [CT.PRO_COACHES]: "Pro Coaches",
-  [CT.TOURNAMENTS]: "Tournaments & Leagues",
-  [CT.PRO_TABLES]: "Table Quality",
-  [CT.WEATHER_CONTROL]: "Climate Control",
-  [CT.ACCESSIBILITY]: "Wheelchair Accessibility",
+  _permanence: "Permanance",
+  _hours: "Hours",
+  _club_size: "Club Size",
+  _ceiling_height: "Ceiling Height",
+  _flooring: "Flooring",
+  _lighting: "Lighting",
+  _court_size: "Court Size",
+  _barriers: "Court Barriers",
+  _group_training: "Group Training",
+  _walkin_friendly: "Walk-In Friendly",
+  _pro_coaches: "Pro Coaches",
+  _tournaments: "Tournaments & Leagues",
+  _table_quality: "Table Quality",
+  _climate_control: "Climate Control",
+  _accessibility: "Wheelchair Accessibility",
 };
 
 const splitCsvString = (str) => str.split(/(,)(?=(?:[^"]|"[^"]*")*$)/);

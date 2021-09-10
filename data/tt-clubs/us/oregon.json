@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Paddle Palace Club",
+    "id": "paddle-palace-club",
+    "address": "12230 SW Main St, Suite B\nTigard, OR 97223",
+    "phone": "+15035496292",
+    "visited": true,
+    "website": "https://www.paddlepalaceclub.com/",
+    "facebook": "https://www.facebook.com/PaddlePalaceClub/",
+    "pricePerDay": "$12",
+    "lat": 45.43123614910387,
+    "lng": -122.76937887293857,
+    "images": [
+      "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/217040610_1892878957541255_5008024683196658870_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=e3f864&_nc_ohc=euzgOW5C2eoAX96O6C1&_nc_ht=scontent-lga3-1.xx&oh=c5e7a23ffe3ece0454ba3b314155e9da&oe=615C8A8C",
+      "https://blog.paddlepalace.com/wp-content/uploads/2018/02/27072796_918636534965507_5098531900377821164_n.jpg"
+    ],
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 1,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": 2,
+      "_accessibility": 2
+    }
+  }
+]

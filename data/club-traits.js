@@ -19,7 +19,7 @@ const CLUB_TRAITS = {
 const CT = CLUB_TRAITS;
 
 const TRAIT_DATA = {
-  [CT.PERMANENCE]: {
+  _permanence: {
     color: "blue",
     name: "Permanence",
     options: {
@@ -28,7 +28,7 @@ const TRAIT_DATA = {
       2: "The majority of this facility is always dedicated to table tennis.",
     },
   },
-  [CT.HOURS]: {
+  _hours: {
     color: "pink",
     name: "Hours",
     options: {
@@ -37,7 +37,7 @@ const TRAIT_DATA = {
       2: "The club is open 5-7 days a week with reliable hours.",
     },
   },
-  [CT.CLUB_SIZE]: {
+  _club_size: {
     name: "Club Size",
     options: {
       0: "There is space for 1-4 simultaneous, competitive matches at this location.",
@@ -45,7 +45,7 @@ const TRAIT_DATA = {
       2: "There is space for more than 10 simultaneous, competitive matches at this location.",
     },
   },
-  [CT.CEILINGS]: {
+  _ceiling_height: {
     color: "yellow",
     name: "Ceiling Height",
     options: {
@@ -54,7 +54,7 @@ const TRAIT_DATA = {
       2: "The ceilings are high enough for professional matches (5+ meters high).",
     },
   },
-  [CT.FLOORING]: {
+  _flooring: {
     color: "yellow",
     name: "Flooring",
     options: {
@@ -63,7 +63,7 @@ const TRAIT_DATA = {
       2: "There is rubberized flooring on a majority of the courts.",
     },
   },
-  [CT.LIGHTING]: {
+  _lighting: {
     color: "yellow",
     name: "Lighting",
     options: {
@@ -72,7 +72,7 @@ const TRAIT_DATA = {
       2: "The courts are lit well enough for professional matches (500+ lux).",
     },
   },
-  [CT.COURT_SIZE]: {
+  _court_size: {
     color: "yellow",
     name: "Court Size",
     options: {
@@ -81,7 +81,7 @@ const TRAIT_DATA = {
       2: "Most courts are large enough for competitive play (at least 28' x 13'); some are large enough for professional matches (at least 30' x 16'6\").",
     },
   },
-  [CT.BARRIERS]: {
+  _barriers: {
     color: "yellow",
     name: "Court Barriers",
     options: {
@@ -90,7 +90,7 @@ const TRAIT_DATA = {
       2: "There are enough barriers to completely surround most courts.",
     },
   },
-  [CT.GROUP_TRAINING]: {
+  _group_training: {
     color: "yellow",
     name: "Group Training",
     options: {
@@ -99,7 +99,7 @@ const TRAIT_DATA = {
       2: "There are at least two different regular, continous group training programs all year round.",
     },
   },
-  [CT.WALKINS]: {
+  _walkin_friendly: {
     color: "yellow",
     name: "Walk-in Friendly",
     options: {
@@ -108,7 +108,7 @@ const TRAIT_DATA = {
       2: "No membership required to play; walk-ins welcome.",
     },
   },
-  [CT.PRO_COACHES]: {
+  _pro_coaches: {
     color: "yellow",
     name: "Pro Coaches",
     options: {
@@ -117,16 +117,7 @@ const TRAIT_DATA = {
       2: "There are professional, national- or international-level coaches available.",
     },
   },
-  // [CT.COMPETITIVE_LEVEL]: {
-  //   color: "yellow",
-  //   name: "Competitive Level",
-  //   options: {
-  //     0: "There are no or very few advanced competitive players who play here regularly.",
-  //     1: "There are advanced competitive players who play here regularly.",
-  //     2: "On most days, there are many advanced competitive players at this club.",
-  //   },
-  // },
-  [CT.TOURNAMENTS]: {
+  _tournaments: {
     color: "yellow",
     name: "Tournaments & Leagues",
     options: {
@@ -135,7 +126,7 @@ const TRAIT_DATA = {
       2: "There are regularly organized nationally-sanctioned tournaments.",
     },
   },
-  [CT.PRO_TABLES]: {
+  _table_quality: {
     color: "yellow",
     name: "Table Quality",
     options: {
@@ -144,7 +135,7 @@ const TRAIT_DATA = {
       2: 'Most tables are good enough for competitive play - at least 18mm (~3/4") thick. Some are good enough for professional matches - 25mm (~1") thick and made from one continuous sheet (not foldable).',
     },
   },
-  [CT.WEATHER_CONTROL]: {
+  _climate_control: {
     color: "yellow",
     name: "Climate Control",
     options: {
@@ -153,7 +144,7 @@ const TRAIT_DATA = {
       2: "This club uses climate control to almost always maintain comfortable playing conditions (~15-20°C or ~60-70°F).",
     },
   },
-  [CT.ACCESSIBILITY]: {
+  _accessibility: {
     color: "yellow",
     name: "Wheelchair Accessibility",
     options: {
@@ -162,15 +153,6 @@ const TRAIT_DATA = {
       2: "This club is designed for full wheelchair accessibility.",
     },
   },
-  // [CT.MAINTENANCE]: {
-  //   color: "yellow",
-  //   name: "Clean & well-maintained",
-  //   options: {
-  //     0: "This club is minimally maintained or cleaned.",
-  //     1: "This club is regularly maintained and cleaned to satisfactory conditions.",
-  //     2: "This club employs professional cleaning & maintenance staff to keep things in excellent condition.",
-  //   },
-  // },
 };
 
 module.exports = {
