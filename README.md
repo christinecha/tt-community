@@ -15,9 +15,19 @@ Anyone is welcome to fill out this form: https://docs.google.com/forms/d/e/1FAIp
 4. Once you save your work, check your local instance of the site to make sure it shows up correctly.
 5. Important! Once you're done, mark the "Added?" field in the [form response spreadsheet](https://docs.google.com/spreadsheets/d/1-c-pqPnBOsGpECs5SmvYUksO6xvlbgIb1CK-jAmLCeA/edit?resourcekey=null#gid=1062528263) with an X so we don't duplicate this effort next time.
 
+### Submit a PR
+
+Once you've added new clubs to the repo (or made any other changes), please submit a PR for approval.
+
+- Create a new branch (naming convention: <you>/<description>, like cha/new-clubs)
+- Commit & push to this branch
+- Open a PR from this branch to `main`
+- Tag `christinecha` as a reviewer
+
 ### Running this app locally
 
 ```sh
+git checkout main
 yarn install
 yarn run dev
 ```
