@@ -1,7 +1,6 @@
 /node_modules
-/public/scripts
 **/dist/
 **/*.DS_Store
-./public/
+/public
 
 /home-values-zillow.csv
