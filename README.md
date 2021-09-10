@@ -2,7 +2,7 @@
 
 Anyone is welcome to fill out this form: https://docs.google.com/forms/d/e/1FAIpQLSeTJTjAsNtvEMxTIZSToKbP02_uVKKv-EOR0uMIazdMg6xPTQ/viewform
 
-## Add new clubs to the repo & publish
+### Add new clubs to the repo & publish
 
 1. From this directory, run `yarn run form-to-clubs` in your terminal to automatically download the form response data.
 2. Copy and paste the generated objects into the corresponding file in `/data/tt-clubs`.
