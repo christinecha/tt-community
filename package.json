@@ -34,10 +34,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "build": "yarn run compile-clubs && NODE_ENV=production webpack",
+    "copy-static": "mkdir -p ./public && cp -r ./src/static/* ./public",
+    "build": "yarn run copy-static && yarn run compile-clubs && NODE_ENV=production webpack",
     "form-to-clubs": "node ./scripts/form-to-clubs.js",
     "generate:map-data": "node ./scripts/generate-map-data.js",
-    "dev": "yarn run compile-clubs:dev & NODE_ENV=development webpack serve",
+    "dev": "yarn run copy-static & yarn run compile-clubs:dev & NODE_ENV=development webpack serve",
     "check-clubs": "yarn run compile-clubs && node ./scripts/check-club-data",
     "compile-clubs": "node ./scripts/compile-clubs",
     "compile-clubs:dev": "nodemon ./scripts/compile-clubs"
