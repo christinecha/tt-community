@@ -12,7 +12,7 @@ console.log("Checking club data...");
 const REQUIRED_PROPS = ["name", "id", "address", "lat", "lng"];
 
 clubs.forEach((club, i) => {
-  const ID = `${club.country}: ${club.name}`;
+  const ID = `[${club.id}] ${club.name}`;
   const otherClubs = [...clubs];
   otherClubs.splice(i, 1);
   const missingProps = REQUIRED_PROPS.filter((prop) => club[prop] === null);
@@ -26,12 +26,12 @@ clubs.forEach((club, i) => {
 
   if (duplicate) {
     console.log(
-      `[${ID}] Duplicate prop "${duplicateProp}" found: ${duplicate.name}`
+      `${ID}: Duplicate prop "${duplicateProp}" found: ${duplicate.name}`
     );
   }
 
   if (missingProps.length) {
-    console.log(`[${ID}] Missing required info: ${missingProps.join(", ")} `);
+    console.log(`${ID}: Missing required info: ${missingProps.join(", ")} `);
     incomplete.push(club);
   }
 
@@ -41,7 +41,7 @@ clubs.forEach((club, i) => {
   });
 
   if (!club.traits || missingTraits.length) {
-    console.log(`[${ID}] Missing ${missingTraits.length} trait(s).`);
+    console.log(`${ID}: Missing ${missingTraits.length} trait(s).`);
     traitsMissing.push(club);
   }
 });
