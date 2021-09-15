@@ -45,10 +45,13 @@ glob("data/tt-clubs/!(dist)/*.json", (err, files) => {
     }
 
     club.locations.forEach((l) => {
-      expandedClubs.push({
+      const location = {
         ...club,
         ...l,
-        score: getClubScore(club),
+      };
+      expandedClubs.push({
+        ...location,
+        score: getClubScore(location),
       });
     });
   });
