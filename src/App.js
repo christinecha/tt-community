@@ -44,6 +44,20 @@ const cacheMap = (center, zoom) => {
   window.localStorage.setItem("searchZoom", zoom);
 };
 
+const SuggestNew = () => (
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSeTJTjAsNtvEMxTIZSToKbP02_uVKKv-EOR0uMIazdMg6xPTQ/viewform"
+    target="_blank"
+    css={css({
+      marginLeft: "auto",
+      marginRight: 0,
+      color: "var(--bgColor)",
+    })}
+  >
+    <label data-xs>+ Suggest a club</label>
+  </a>
+);
+
 export const App = withRouter(({ history, match }) => {
   const activeClub = useMemo(
     () => getClubFromId(match.params.clubId),
@@ -194,6 +208,7 @@ export const App = withRouter(({ history, match }) => {
               Table Tennis Community 🏓 🌏
             </h1>
             <p>Where to play table tennis all over the world.</p>
+            {!isMobile && <SuggestNew />}
             <LocationSearch
               onChange={onSearch}
               defaultValue={initialLocation}
@@ -201,7 +216,9 @@ export const App = withRouter(({ history, match }) => {
             <br />
             {children}
             {isMobile && (
-              <div css={css({ marginBottom: 10, marginTop: 5 })}>
+              <div
+                css={css({ marginBottom: 10, marginTop: 5, display: "flex" })}
+              >
                 <button
                   onClick={() =>
                     setMobileView(
@@ -217,6 +234,7 @@ export const App = withRouter(({ history, match }) => {
                     : MOBILE_VIEW.MAP.name}{" "}
                   View
                 </button>
+                <SuggestNew />
               </div>
             )}
           </div>
