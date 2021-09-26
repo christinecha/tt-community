@@ -19,6 +19,11 @@
         "id": "new_jersey",
         "name": "New Jersey",
         "type": "state"
+      },
+      {
+        "id": "pennsylvania",
+        "name": "Pennsylvania",
+        "type": "state"
       }
     ]
   }
