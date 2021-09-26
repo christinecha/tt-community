@@ -1,0 +1,25 @@
+[
+  {
+    "id": "ecuador",
+    "name": "Ecuador",
+    "type": "country",
+    "locations": []
+  },
+  {
+    "id": "us",
+    "name": "the United States",
+    "type": "country",
+    "locations": [
+      {
+        "id": "alabama",
+        "name": "Alabama",
+        "type": "state"
+      },
+      {
+        "id": "new_jersey",
+        "name": "New Jersey",
+        "type": "state"
+      }
+    ]
+  }
+]

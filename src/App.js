@@ -19,7 +19,7 @@ import rawClubs from "../data/tt-clubs/dist/all-clubs.json";
 import { ClubDetail } from "./ClubDetail";
 import { ClubList } from "./ClubList";
 import { ClubMap } from "./ClubMap";
-import { useMobile, MobileProvider } from "./util";
+import { useMobile, MobileProvider, getLocaleString } from "./util";
 import { FILTER_RATING, SORT, SortAndFilter } from "./SortAndFilter";
 import { withRouter } from "react-router";
 import { Helmet } from "react-helmet";
@@ -256,7 +256,9 @@ export const App = withRouter(({ history, match }) => {
           <title>{activeClub.name} 🏓 🌏</title>
           <meta
             name="description"
-            content={`${activeClub.name} - a place to play table tennis (aka ping pong).`}
+            content={`Where to play table tennis (aka ping pong) ${getLocaleString(
+              activeClub
+            )}: ${activeClub.name}`}
           />
         </Helmet>
       )}

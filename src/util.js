@@ -38,3 +38,10 @@ export const FakeLink = ({ to, children, ...rest }) => {
     </a>
   );
 };
+
+export const getLocaleString = (club) => {
+  if (!club.country) return "anywhere";
+  if (!club.state && !club.province) return `in ${club.country}`;
+  if (club.state) return `in ${club.state}`;
+  if (club.province) return `in ${club.province}`;
+};
