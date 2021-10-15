@@ -37,3 +37,5 @@ yarn run dev
 `// TODO: Make this a proper commit hook`
 
 Run `yarn run check-clubs`. Clubs should have all of their required fields before you commit.
+
+Test 1
