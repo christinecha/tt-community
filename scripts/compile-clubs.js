@@ -53,63 +53,67 @@ const addLocaleData = (clubs) => {
   });
 };
 
-glob("data/tt-clubs/!(dist)/*.json", (err, files) => {
-  let allClubs = [];
+glob(
+  "data/tt-clubs/**/*.json",
+  { ignore: "data/tt-clubs/dist/**" },
+  (err, files) => {
+    let allClubs = [];
 
-  if (err) {
-    throw err;
-  }
-
-  files.forEach((file) => {
-    const content = fs.readFileSync(file, { encoding: "utf8" });
-
-    let clubs;
-    try {
-      clubs = JSON.parse(content).map((club) => ({
-        ...club,
-        filepath: file,
-      }));
-    } catch (err) {
-      console.log(`Error parsing ${file}: ${err}`);
-      return;
-    }
-    allClubs = [...allClubs, ...clubs];
-  });
-
-  const expandedClubs = [];
-  allClubs.forEach((club) => {
-    if (!club.locations) {
-      expandedClubs.push({
-        ...club,
-        score: getClubScore(club),
-      });
-      return;
+    if (err) {
+      throw err;
     }
 
-    club.locations.forEach((l) => {
-      const location = {
-        ...club,
-        ...l,
-      };
-      expandedClubs.push({
-        ...location,
-        score: getClubScore(location),
+    files.forEach((file) => {
+      const content = fs.readFileSync(file, { encoding: "utf8" });
+
+      let clubs;
+      try {
+        clubs = JSON.parse(content).map((club) => ({
+          ...club,
+          filepath: file,
+        }));
+      } catch (err) {
+        console.log(`Error parsing ${file}: ${err}`);
+        return;
+      }
+      allClubs = [...allClubs, ...clubs];
+    });
+
+    const expandedClubs = [];
+    allClubs.forEach((club) => {
+      if (!club.locations) {
+        expandedClubs.push({
+          ...club,
+          score: getClubScore(club),
+        });
+        return;
+      }
+
+      club.locations.forEach((l) => {
+        const location = {
+          ...club,
+          ...l,
+        };
+        expandedClubs.push({
+          ...location,
+          score: getClubScore(location),
+        });
       });
     });
-  });
 
-  /* Add location data */
-  const withLocationData = addLocaleData(expandedClubs);
+    /* Add location data */
+    const withLocationData = addLocaleData(expandedClubs);
 
-  if (!fs.existsSync(path.resolve(TT_CLUBS_DIR, "dist"))) {
-    fs.mkdirSync(path.resolve(TT_CLUBS_DIR, "dist"));
-  }
-
-  fs.writeFileSync(
-    path.resolve(TT_CLUBS_DIR, "dist/all-clubs.json"),
-    JSON.stringify(withLocationData),
-    {
-      encoding: "utf8",
+    if (!fs.existsSync(path.resolve(TT_CLUBS_DIR, "dist"))) {
+      fs.mkdirSync(path.resolve(TT_CLUBS_DIR, "dist"));
     }
-  );
-});
+
+    fs.writeFileSync(
+      path.resolve(TT_CLUBS_DIR, "dist/all-clubs.json"),
+      JSON.stringify(withLocationData),
+      {
+        encoding: "utf8",
+      }
+    );
+  }
+);
