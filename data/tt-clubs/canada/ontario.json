@@ -35,7 +35,7 @@
     }
   },
   {
-    "id": "cctta-CanadianCommunityTTA",
+    "id": "cctta",
     "name": "Canadian Community Table Tennis Association",
     "address": "1181 Denison Street Markham, On, Canada  L3R 4B2",
     "website": "https://en.cctta.net/",
@@ -60,12 +60,82 @@
       "_lighting": 2,
       "_court_size": 2,
       "_barriers": 1,
-      "_group_training": 3,
+      "_group_training": 2,
       "_walkin_friendly": 1,
       "_pro_coaches": 2,
       "_tournaments": 2,
       "_table_quality": 2,
-      "_climate_control": 2,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  },
+  {
+    "id": "myttc-mississauga",
+    "name": "My Table Tennis Club (Mississauga)",
+    "address": "2436 Haines Road, Mississauga, ON L4Y 1Y6",
+    "website": "https://MyTableTennisClub.ca/",
+    "facebook": "https://www.facebook.com/My-Table-Tennis-Club-Mississauga-152125711543416",
+    "phone": "905-566-9883",
+    "email": "rays@mytabletennisclub.ca",
+    "pricePerHour": "$6 CAD",
+    "pricePerDay": "N/A",
+    "lat": 43.59374394364734,
+    "lng": -79.59202682573324,
+    "images": [
+      "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.6435-9/103275909_2981258018630157_3289251198547234198_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=e3f864&_nc_ohc=ISZ5vKMdg38AX8mOLxX&_nc_ht=scontent-sjc3-1.xx&oh=1a1f6b258d30c9b8bbdedcac12cd497b&oe=619294A0",
+      "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.6435-9/82842356_2653123524776943_1460688394202906624_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=I-jivNHst-cAX_83MrE&_nc_ht=scontent-sjc3-1.xx&oh=3238720161fb07fb974ebfdfd5f1d9ad&oe=6192D56B"
+    ],
+    "priceBy": "person",
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 2,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": null,
+      "_accessibility": null
+    }
+  },
+  {
+    "id": "myttc-waterloo",
+    "name": "My Table Tennis Club (Waterloo)",
+    "address": "259 Gage Avenue Kitchener, Ontario N2M 2C9",
+    "website": "https://MyTableTennisClub.ca/",
+    "facebook": "https://www.facebook.com/myttcWaterloo/?ref=page_internal",
+    "phone": "519-578-8668",
+    "email": "james@mytabletennisclub.ca",
+    "pricePerHour": "$6 CAD",
+    "pricePerDay": "N/A",
+    "lat": 43.447026815254524,
+    "lng": -80.51643430390274,
+    "images": [
+      "https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/224198712_2969028020083327_49158476386378825_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=730e14&_nc_ohc=YCSa0PS2cSoAX810V3r&_nc_ht=scontent-sjc3-1.xx&oh=d078d3be15dfbfb1d70a4210418b8362&oe=61713C39",
+      "https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/215804020_2955934528059343_8154438535548117877_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_ohc=KU0rq0Gd_lsAX9ye4xD&_nc_ht=scontent-sjc3-1.xx&oh=fb68c558a6ba6ca99de0667e56b7f0d6&oe=617116C3"
+    ],
+    "priceBy": "person",
+    "traits": {
+      "_permanence": 2,
+      "_hours": 2,
+      "_club_size": 2,
+      "_ceiling_height": 2,
+      "_flooring": 2,
+      "_lighting": 2,
+      "_court_size": 2,
+      "_barriers": 2,
+      "_group_training": 2,
+      "_walkin_friendly": 2,
+      "_pro_coaches": 2,
+      "_tournaments": 2,
+      "_table_quality": 2,
+      "_climate_control": null,
       "_accessibility": null
     }
   }
